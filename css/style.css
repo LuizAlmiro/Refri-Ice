@@ -1,0 +1,392 @@
+/* =========================================================
+   REFRI ICE — style.css
+   Base: reset, design tokens, tipografia e utilitários gerais
+   ========================================================= */
+
+/* ---------- Google Fonts ----------
+   Display: Space Grotesk  -> geométrica, técnica, remete a instrumentos/painéis
+   Corpo:   Inter          -> legibilidade em textos longos
+   Utilitária/dados: IBM Plex Mono -> leitura tipo "painel digital" (CEP, status, specs)
+------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  /* ---- Paleta (extraída do logo Refri Ice) ---- */
+  --navy-900: #0b1f44;
+  /* azul-marinho do logo — base escura */
+  --navy-800: #142b5c;
+  /* marinho secundário, gradientes */
+  --navy-700: #1d3a73;
+
+  --ice-500: #4fb6e3;
+  /* azul claro do logo — cor primária da marca */
+  --ice-400: #6fc7ea;
+  --ice-300: #8fdcf2;
+  /* brilho/hover */
+  --ice-100: #dff3fb;
+
+  --frost-50: #f3f9fc;
+  /* fundo geral — branco gelado, não creme */
+  --frost-0: #ffffff;
+
+  --slate-600: #48556b;
+  /* texto de corpo */
+  --slate-400: #7c8aa0;
+  /* texto secundário / legendas */
+  --line: #dde8f0;
+  /* divisores sutis */
+
+  --success: #2fbf71;
+  /* status: área atendida */
+  --danger: #e8563f;
+  /* status: fora da área */
+
+  /* ---- Tipografia ---- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* ---- Layout ---- */
+  --container: 1180px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-panel: 0 20px 45px -20px rgba(11, 31, 68, 0.35);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--slate-600);
+  background-color: var(--frost-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--navy-900);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+/* ---------- Layout utilitário ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section--tight {
+  padding: 64px 0;
+}
+
+.section--dark {
+  background: linear-gradient(160deg, var(--navy-900), var(--navy-800));
+  color: var(--ice-100);
+}
+
+.section--dark h2,
+.section--dark h3 {
+  color: var(--frost-0);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ice-500);
+  margin-bottom: 14px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: var(--ice-500);
+  display: inline-block;
+}
+
+.section-heading {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  margin-bottom: 14px;
+}
+
+.section-heading p {
+  color: var(--slate-400);
+  font-size: 1.02rem;
+}
+
+.section--dark .section-heading p {
+  color: var(--ice-100);
+  opacity: 0.8;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--ice-500);
+  color: var(--navy-900);
+}
+
+.btn-primary:hover {
+  background: var(--ice-300);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -12px rgba(79, 182, 227, 0.55);
+}
+
+.btn-outline {
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: var(--frost-0);
+}
+
+.btn-outline:hover {
+  border-color: var(--ice-500);
+  background: rgba(79, 182, 227, 0.12);
+}
+
+.btn-ghost {
+  border: 1.5px solid var(--line);
+  color: var(--navy-900);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ice-500);
+  color: var(--ice-500);
+}
+
+/* ---------- Reveal ao rolar ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Cartões de serviço ---------- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  counter-reset: stage;
+}
+
+.service-card {
+  position: relative;
+  background: var(--frost-0);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 32px 26px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--ice-500);
+  box-shadow: var(--shadow-panel);
+}
+
+.service-card__stage {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--ice-500);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.service-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.service-card__icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--ice-500);
+}
+
+.service-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.94rem;
+  color: var(--slate-400);
+  margin-bottom: 14px;
+}
+
+.service-card__list {
+  font-size: 0.88rem;
+  color: var(--slate-600);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.service-card__list li {
+  padding-left: 16px;
+  position: relative;
+}
+
+.service-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ice-500);
+}
+
+/* Linha de conexão do ciclo (desktop) */
+.service-timeline {
+  position: relative;
+}
+
+.service-timeline::before {
+  content: "";
+  position: absolute;
+  top: 55px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+      var(--ice-300) 0,
+      var(--ice-300) 8px,
+      transparent 8px,
+      transparent 16px);
+  z-index: 0;
+}
+
+/* ---------- Página interna: cabeçalho de página ---------- */
+.page-hero {
+  padding: 150px 0 64px;
+  background: linear-gradient(160deg, var(--navy-900), var(--navy-800));
+  color: var(--frost-0);
+}
+
+.page-hero .eyebrow {
+  color: var(--ice-300);
+}
+
+.page-hero h1 {
+  color: var(--frost-0);
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  max-width: 700px;
+}
+
+.page-hero p {
+  margin-top: 16px;
+  max-width: 560px;
+  color: var(--ice-100);
+  opacity: 0.85;
+}

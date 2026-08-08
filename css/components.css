@@ -1,0 +1,258 @@
+/* =========================================================
+   REFRI ICE — components.css
+   Hero da home + Painel de Cobertura (verificador de CEP)
+   ========================================================= */
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 160px 0 110px;
+  background:
+    linear-gradient(160deg, rgba(11, 31, 68, 0.88) 0%, rgba(20, 43, 92, 0.82) 55%, rgba(29, 58, 115, 0.8) 100%),
+    url('../img/hero-bg.jpg') left center / cover no-repeat;
+  color: var(--frost-0);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(143, 220, 242, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 220, 242, 0.06) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse at 30% 30%, black, transparent 70%);
+  pointer-events: none;
+}
+
+.hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero__copy .eyebrow {
+  color: var(--ice-300);
+}
+
+.hero__copy h1 {
+  color: var(--frost-0);
+  font-size: clamp(2.3rem, 4.4vw, 3.4rem);
+  margin-bottom: 20px;
+}
+
+.hero__copy h1 em {
+  font-style: normal;
+  color: var(--ice-500);
+}
+
+.hero__copy p {
+  color: var(--ice-100);
+  opacity: 0.85;
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.hero__stats {
+  display: flex;
+  gap: 34px;
+}
+
+.hero__stats div strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--frost-0);
+}
+
+.hero__stats div span {
+  font-size: 0.8rem;
+  color: var(--ice-100);
+  opacity: 0.7;
+}
+
+/* ---------- Painel de Cobertura (elemento assinatura) ---------- */
+.coverage-panel {
+  position: relative;
+  background: linear-gradient(175deg, #0e2650, #0a1a38);
+  border: 1px solid rgba(143, 220, 242, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 30px 28px 26px;
+  box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.coverage-panel__vents {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  display: flex;
+  gap: 4px;
+}
+
+.coverage-panel__vents span {
+  width: 3px;
+  height: 16px;
+  background: rgba(143, 220, 242, 0.25);
+  border-radius: 2px;
+}
+
+.coverage-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.coverage-panel__head h3 {
+  color: var(--frost-0);
+  font-size: 1.05rem;
+}
+
+.coverage-panel__led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ice-500);
+  box-shadow: 0 0 0 4px rgba(79, 182, 227, 0.18);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coverage-panel__led.is-checking {
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+.coverage-panel__led.is-success {
+  background: var(--success);
+  box-shadow: 0 0 0 4px rgba(47, 191, 113, 0.18);
+}
+
+.coverage-panel__led.is-danger {
+  background: var(--danger);
+  box-shadow: 0 0 0 4px rgba(232, 86, 63, 0.18);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.coverage-panel__form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.coverage-panel__form input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(143, 220, 242, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+  color: var(--frost-0);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.coverage-panel__form input::placeholder {
+  color: rgba(223, 243, 251, 0.4);
+}
+
+.coverage-panel__form input:focus {
+  outline: none;
+  border-color: var(--ice-500);
+  box-shadow: 0 0 0 3px rgba(79, 182, 227, 0.22);
+}
+
+.coverage-panel__form button {
+  background: var(--ice-500);
+  color: var(--navy-900);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 20px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.coverage-panel__form button:hover {
+  background: var(--ice-300);
+  transform: translateY(-1px);
+}
+
+.coverage-panel__form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.coverage-panel__readout {
+  min-height: 92px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px dashed rgba(143, 220, 242, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  font-family: var(--font-mono);
+}
+
+.coverage-panel__readout .readout-idle {
+  color: rgba(223, 243, 251, 0.45);
+  font-size: 0.85rem;
+}
+
+.coverage-panel__readout .readout-line {
+  font-size: 0.8rem;
+  color: var(--ice-100);
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+
+.coverage-panel__readout .readout-line span:first-child {
+  opacity: 0.55;
+}
+
+.coverage-panel__readout .readout-status {
+  margin-top: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.coverage-panel__readout .readout-status.ok {
+  color: var(--success);
+}
+
+.coverage-panel__readout .readout-status.no {
+  color: var(--danger);
+}
+
+.coverage-panel__readout .readout-note {
+  margin-top: 4px;
+  font-size: 0.76rem;
+  color: rgba(223, 243, 251, 0.6);
+  font-family: var(--font-body);
+}
+
+.coverage-panel__foot {
+  margin-top: 16px;
+  font-size: 0.74rem;
+  color: rgba(223, 243, 251, 0.45);
+  font-family: var(--font-mono);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Painel compacto reutilizado na página de contato */
+.coverage-panel--compact {
+  max-width: 420px;
+}

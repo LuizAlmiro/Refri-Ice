@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Refri Ice</title>
+  <meta name="description"
+    content="Solicite orçamento de climatização, manutenção ou desinstalação de ar-condicionado na capital de São Paulo.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" href="img/Refri ice.jpeg" type="image/jpeg">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-header__brand">
+        <img src="img/Refri ice.jpeg" alt="Refri Ice">
+        <span class="site-header__brand-text">
+          <strong>Refri Ice</strong>
+          <span>Refrigeração &amp; Climatização</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul class="main-nav__list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="contato.html" class="btn btn-primary">Solicitar orçamento</a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Contato</span>
+        <h1>Vamos climatizar seu ambiente</h1>
+        <p>Confirme se atendemos sua região e conte o que você precisa.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="display:grid; grid-template-columns:1fr 0.85fr; gap:56px; align-items:start;">
+
+        <!-- Formulário de contato -->
+        <div>
+          <span class="eyebrow">Solicitar orçamento</span>
+          <h2 style="font-size:1.7rem; margin-bottom:24px;">Envie seus dados</h2>
+
+          <form class="contact-form" data-contact-form novalidate>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div>
+                <label for="nome"
+                  style="display:block; font-size:0.85rem; margin-bottom:6px; color:var(--navy-900); font-weight:500;">Nome</label>
+                <input type="text" id="nome" name="nome" required
+                  style="width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:0.95rem;">
+              </div>
+              <div>
+                <label for="telefone"
+                  style="display:block; font-size:0.85rem; margin-bottom:6px; color:var(--navy-900); font-weight:500;">Telefone
+                  / WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" required
+                  style="width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:0.95rem;">
+              </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label for="email"
+                style="display:block; font-size:0.85rem; margin-bottom:6px; color:var(--navy-900); font-weight:500;">E-mail</label>
+              <input type="email" id="email" name="email" required
+                style="width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:0.95rem;">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div>
+                <label for="cep-contato"
+                  style="display:block; font-size:0.85rem; margin-bottom:6px; color:var(--navy-900); font-weight:500;">CEP
+                  do local</label>
+                <input type="text" id="cep-contato" name="cep" inputmode="numeric" maxlength="9" required
+                  style="width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:0.95rem;">
+              </div>
+              <div>
+                <label for="servico"
+                  style="display:block; font-size:0.85rem; margin-bottom:6px; color:var(--navy-900); font-weight:500;">Serviço
+                  desejado</label>
+                <select id="servico" name="servico" required
+                  style="width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:0.95rem; background:#fff;">
+                  <option value="">Selecione</option>
+                  <option value="climatizacao">Climatização (instalação)</option>
+                  <option value="manutencao">Manutenção</option>
+                  <option value="desinstalacao">Desinstalação</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-bottom:22px;">
+              <label for="mensagem"
+                style="display:block; font-size:0.85rem; margin-bottom:6px; color:var(--navy-900); font-weight:500;">Conte
+                um pouco sobre o que você precisa</label>
+              <textarea id="mensagem" name="mensagem" rows="4"
+                style="width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:0.95rem; resize:vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar solicitação</button>
+            <p data-contact-feedback style="margin-top:14px; font-size:0.88rem; color:var(--slate-400);"></p>
+          </form>
+        </div>
+
+        <!-- Painel de cobertura compacto + dados de contato -->
+        <div>
+          <div class="coverage-panel coverage-panel--compact" data-coverage-panel>
+            <div class="coverage-panel__vents">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="coverage-panel__head">
+              <h3>Verificar cobertura</h3>
+              <div class="coverage-panel__led" data-cep-led></div>
+            </div>
+
+            <form class="coverage-panel__form" data-cep-form>
+              <label class="sr-only" for="cep-contato-panel">Digite seu CEP</label>
+              <input type="text" id="cep-contato-panel" data-cep-input inputmode="numeric" placeholder="Seu CEP"
+                maxlength="9" required>
+              <button type="submit" data-cep-submit>Verificar</button>
+            </form>
+
+            <div class="coverage-panel__readout" data-cep-readout>
+              <p class="readout-idle">Aguardando CEP para consulta…</p>
+            </div>
+          </div>
+
+          <div
+            style="margin-top:28px; padding:28px; background:var(--frost-0); border:1px solid var(--line); border-radius:var(--radius-lg);">
+            <h3 style="font-size:1.05rem; margin-bottom:16px;">Outros canais</h3>
+            <p style="font-size:0.92rem; margin-bottom:8px;"><strong>WhatsApp:</strong> (11) 0000-0000</p>
+            <p style="font-size:0.92rem; margin-bottom:8px;"><strong>E-mail:</strong> contato@refriice.com.br</p>
+            <p style="font-size:0.92rem;"><strong>Horário:</strong> Seg. a sáb., 8h às 18h</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <img src="img/Refri ice.jpeg" alt="Refri Ice">
+            <strong>Refri Ice</strong>
+          </div>
+          <p>Refrigeração e climatização na capital de São Paulo. Instalação, manutenção e desinstalação com equipe
+            própria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="servicos.html#climatizacao">Climatização</a></li>
+            <li><a href="servicos.html#manutencao">Manutenção</a></li>
+            <li><a href="servicos.html#desinstalacao">Desinstalação</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <address>
+            (11) 0000-0000<br>
+            contato@refriice.com.br<br>
+            Atendimento na capital de São Paulo
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span data-current-year></span> Refri Ice — Refrigeração &amp; Climatização</span>
+        <span>Todos os direitos reservados</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+  <script src="js/cep-checker.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/contact-form.js"></script>
+</body>
+
+</html>

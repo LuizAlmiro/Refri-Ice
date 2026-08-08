@@ -1,0 +1,133 @@
+/* =========================================================
+   REFRI ICE — header.css
+   Cabeçalho fixo e navegação
+   ========================================================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(11, 31, 68, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 12px 0;
+  box-shadow: 0 10px 30px -18px rgba(11, 31, 68, 0.6);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header__brand img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--frost-0);
+  padding: 3px;
+}
+
+.site-header__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.site-header__brand-text strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--frost-0);
+  letter-spacing: 0.01em;
+}
+
+.site-header__brand-text span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ice-300);
+}
+
+.main-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.main-nav__list a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ice-100);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.main-nav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ice-500);
+  transition: width 0.25s ease;
+}
+
+.main-nav__list a:hover,
+.main-nav__list a.is-active {
+  color: var(--frost-0);
+}
+
+.main-nav__list a:hover::after,
+.main-nav__list a.is-active::after {
+  width: 100%;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 26px;
+}
+
+.nav-toggle span {
+  height: 2px;
+  width: 100%;
+  background: var(--frost-0);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
