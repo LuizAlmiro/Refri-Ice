@@ -4,208 +4,654 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Refri Ice | Climatização e Refrigeração em São Paulo</title>
+  <title>Refri Ice | Instalação e Manutenção de Ar-Condicionado em SP, Osasco e Barueri</title>
   <meta name="description"
-    content="Instalação, manutenção e desinstalação de ar-condicionado na capital de São Paulo. Consulte seu CEP e veja se atendemos sua região.">
+    content="Instalação, manutenção, higienização e desinstalação de ar-condicionado desde 2009. Atendemos Pinheiros, Lapa, Morumbi, Centro de SP, Osasco, Barueri e Alphaville. Todas as marcas, garantia de 90 dias.">
+  <meta name="theme-color" content="#06184e">
+  <link rel="canonical" href="index.html">
 
-  <!-- Folhas de estilo -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Refri Ice — Refrigeração & Climatização">
+  <meta property="og:description"
+    content="Instalação e manutenção de ar-condicionado desde 2009. Todas as marcas, garantia de 90 dias.">
+  <meta property="og:image" content="img/Refri ice.jpeg">
+
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="icon" href="img/Refri ice.jpeg" type="image/jpeg">
+  <!-- Leaflet: biblioteca do mapa real da área de cobertura -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HVACBusiness",
+    "name": "Refri Ice Refrigeração & Climatização",
+    "legalName": "Andrew Fernando Menezez Luz",
+    "taxID": "32.384.823/0001-16",
+    "foundingDate": "2009",
+    "image": "img/Refri ice.jpeg",
+    "logo": "img/logo-mark.png",
+    "telephone": "+55 11 99132-1677",
+    "email": "mkt.refriice@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenida Arnaldo de Freitas",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "areaServed": ["Pinheiros", "Lapa", "Morumbi", "Centro de São Paulo", "Osasco", "Barueri", "Alphaville"],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+    ],
+    "paymentAccepted": "Cartão, Pix, Dinheiro",
+    "sameAs": ["https://www.instagram.com/refr.iice/"]
+  }
+  </script>
 </head>
 
 <body>
+  <!-- =========================================================
+       ÍCONES (referenciados com <use href="#i-...">)
+       ========================================================= -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5M9 7h7M9 11h5"/></symbol>
+      <symbol id="i-helmet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20v3H2z"/><path d="M4 18v-3a8 8 0 0 1 16 0v3"/><path d="M10 7.3V4h4v3.3"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.34 19a10 10 0 1 1 17.32 0"/><path d="m12 14 4-4"/><circle cx="12" cy="14" r="1.5"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- =========================================================
-       CABEÇALHO
+       BARRA SUPERIOR + CABEÇALHO
        ========================================================= -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__group">
+        <span class="topbar__item"><svg><use href="#i-clock"/></svg> Seg. a sex. 8h às 18h · Sáb. 8h às 16h</span>
+        <span class="topbar__item topbar__hide-md"><svg><use href="#i-pin"/></svg> Pinheiros, Lapa, Morumbi, Centro, Osasco, Barueri e Alphaville</span>
+      </div>
+      <div class="topbar__group">
+        <a class="topbar__item" href="https://www.instagram.com/refr.iice/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg> @refr.iice</a>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="site-header__brand">
-        <img src="img/logo.png" alt="Refri Ice">
-        <span class="site-header__brand-text">
-          <strong>Refri Ice</strong>
-          <span>Refrigeração &amp; Climatização</span>
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Refri Ice — página inicial">
+        <img src="img/logo-mark.png" alt="" width="41" height="46">
+        <span class="brand__text">
+          <span class="brand__name">REFRI <span>ICE</span></span>
+          <span class="brand__tag">Refrigeração &amp; Climatização</span>
         </span>
       </a>
 
-      <nav class="main-nav" aria-label="Navegação principal">
+      <nav class="main-nav" id="menu" aria-label="Navegação principal">
         <ul class="main-nav__list">
           <li><a href="index.html">Início</a></li>
           <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="index.html#cobertura">Onde atendemos</a></li>
           <li><a href="sobre.html">Sobre</a></li>
           <li><a href="contato.html">Contato</a></li>
         </ul>
+        <a class="btn btn--whatsapp main-nav__cta" data-whatsapp
+          href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+          target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Chamar no WhatsApp</a>
       </nav>
 
       <div class="site-header__actions">
-        <a href="contato.html" class="btn btn-primary">Solicitar orçamento</a>
-        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <a class="header-phone" href="https://wa.me/5511991321677" target="_blank" rel="noopener">
+          <span class="header-phone__icon"><svg><use href="#i-wa"/></svg></span>
+          <span><small>WhatsApp</small><strong>(11) 99132-1677</strong></span>
+        </a>
+        <a href="contato.html" class="btn btn--primary btn--sm">Pedir orçamento</a>
+        <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
     <!-- =========================================================
-         HERO 
+         HERO
          ========================================================= -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <span class="eyebrow">Capital de São Paulo</span>
-          <h1>Climatização sob medida, com <em>precisão técnica</em> do início ao fim.</h1>
-          <p>
-            Instalamos, mantemos e removemos sistemas de ar-condicionado com
-            equipe própria e certificada. Atuamos em regiões específicas da
-            capital — verifique seu CEP ao lado antes de solicitar o serviço.
+          <span class="hero__badge"><span class="hero__badge-dot"></span> Especialistas em ar-condicionado desde 2009</span>
+          <h1>Ar-condicionado instalado e cuidado do <span class="text-accent">jeito certo</span>.</h1>
+          <p class="hero__lead">
+            Instalação, manutenção e desinstalação de <strong>todas as marcas</strong>, seguindo as normas de cada
+            fabricante. Atendemos residências e empresas em <strong>São Paulo, Osasco, Barueri e Alphaville</strong>.
           </p>
           <div class="hero__actions">
-            <a href="servicos.html" class="btn btn-primary">Ver serviços</a>
-            <a href="contato.html" class="btn btn-outline">Falar com técnico</a>
+            <a class="btn btn--whatsapp" data-whatsapp
+              href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+              target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Orçamento pelo WhatsApp</a>
+            <a class="btn btn--outline" href="servicos.html">Conhecer os serviços</a>
           </div>
-          <div class="hero__stats">
-            <div>
-              <strong>+12</strong>
-              <span>bairros atendidos</span>
+          <ul class="hero__proof">
+            <li><strong><span data-years-since="2009">17</span> anos</strong><span>de experiência</span></li>
+            <li><strong>90 dias</strong><span>de garantia</span></li>
+            <li><strong>Até 3 dias</strong><span>para atender</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero-scene">
+            <img class="hero-scene__mark" src="img/logo-mark-light.png" alt="">
+            <svg class="ac-unit" viewBox="0 0 480 290" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="g-unit" x1="0" y1="30" x2="0" y2="150" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#e6f1f9" />
+                </linearGradient>
+                <linearGradient id="g-air" x1="0" y1="150" x2="0" y2="290" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#8fd3f6" stop-opacity="0.95" />
+                  <stop offset="1" stop-color="#8fd3f6" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <rect x="36" y="26" width="408" height="118" rx="28" fill="url(#g-unit)" />
+              <path d="M60 104h360" stroke="#d3e3ef" stroke-width="2" stroke-linecap="round" />
+              <path d="M66 124h348v6a14 14 0 0 1-14 14H80a14 14 0 0 1-14-14v-6Z" fill="#0c2a6b" />
+              <rect x="86" y="131" width="308" height="4" rx="2" fill="#28aaeb" opacity=".6" />
+              <rect x="350" y="50" width="66" height="34" rx="10" fill="#06184e" />
+              <text x="383" y="74" text-anchor="middle" font-family="Saira, sans-serif" font-weight="700" font-size="19" fill="#28aaeb">22°</text>
+              <circle class="led" cx="330" cy="67" r="4.5" fill="#25d366" />
+              <path d="M64 58h120M64 72h80" stroke="#d3e3ef" stroke-width="5" stroke-linecap="round" />
+              <g class="airflow" stroke="url(#g-air)" stroke-width="3.5" stroke-linecap="round">
+                <path d="M130 156c-20 30 16 52-12 86s8 40-14 48" />
+                <path d="M205 158c-10 34 22 56 -4 92s6 30-2 40" />
+                <path d="M280 158c10 34-22 56 4 92s-6 30 2 40" />
+                <path d="M352 156c20 30-16 52 12 86s-8 40 14 48" />
+              </g>
+              <g fill="#8fd3f6" opacity=".7">
+                <circle cx="88" cy="210" r="3" />
+                <circle cx="420" cy="196" r="3" />
+                <circle cx="244" cy="262" r="2.5" />
+                <circle cx="160" cy="276" r="2" />
+                <circle cx="330" cy="270" r="2" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="hero-chip hero-chip--top" aria-hidden="true">
+            <span class="hero-chip__icon"><svg><use href="#i-clock"/></svg></span>
+            <span>Instalação média<strong>2 a 3 horas</strong></span>
+          </div>
+          <div class="hero-chip hero-chip--side" aria-hidden="true">
+            <span class="hero-chip__icon"><svg><use href="#i-shield"/></svg></span>
+            <span>Garantia<strong>90 dias</strong></span>
+          </div>
+
+          <div class="cep-card" data-coverage-panel>
+            <div class="cep-card__head">
+              <span class="cep-card__icon"><svg><use href="#i-pin"/></svg></span>
+              <div>
+                <h2 class="cep-card__title">Atendemos sua região?</h2>
+                <p>Digite o CEP do local do serviço.</p>
+              </div>
             </div>
-            <div>
-              <strong>24–48h</strong>
-              <span>para primeiro atendimento</span>
-            </div>
-            <div>
-              <strong>100%</strong>
-              <span>técnicos próprios</span>
-            </div>
+            <form class="cep-form" data-cep-form novalidate>
+              <label class="sr-only" for="cep-hero">CEP do local</label>
+              <input type="text" id="cep-hero" data-cep-input inputmode="numeric" autocomplete="postal-code"
+                placeholder="00000-000" maxlength="9">
+              <button type="submit" class="btn btn--primary" data-cep-submit>Verificar</button>
+            </form>
+            <div data-cep-result aria-live="polite"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         SERVIÇOS — ciclo de vida do climatizador
+         MARCAS
+         ========================================================= -->
+    <section class="brands" aria-label="Marcas atendidas">
+      <div class="container brands__inner">
+        <p class="brands__label">Trabalhamos com todas as marcas</p>
+        <div class="brands__track">
+          <ul class="brands__list">
+            <li>LG</li><li>Samsung</li><li>Daikin</li><li>Midea</li><li>Gree</li><li>Elgin</li><li>Springer</li>
+            <li>Carrier</li><li>Fujitsu</li><li>Consul</li><li>Electrolux</li><li>Philco</li><li>TCL</li><li>Agratto</li>
+            <li aria-hidden="true">LG</li><li aria-hidden="true">Samsung</li><li aria-hidden="true">Daikin</li>
+            <li aria-hidden="true">Midea</li><li aria-hidden="true">Gree</li><li aria-hidden="true">Elgin</li>
+            <li aria-hidden="true">Springer</li><li aria-hidden="true">Carrier</li><li aria-hidden="true">Fujitsu</li>
+            <li aria-hidden="true">Consul</li><li aria-hidden="true">Electrolux</li><li aria-hidden="true">Philco</li>
+            <li aria-hidden="true">TCL</li><li aria-hidden="true">Agratto</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SERVIÇOS
          ========================================================= -->
     <section class="section" id="servicos">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">O que fazemos</span>
-          <h2>Do primeiro dia até a desinstalação</h2>
-          <p>Acompanhamos o climatizador em cada etapa da sua vida útil — instalação, manutenção contínua e, quando
-            necessário, remoção segura.</p>
+          <span class="eyebrow">Nossos serviços</span>
+          <h2>Da instalação à retirada, um só time cuidando do seu aparelho</h2>
+          <p>Orçamento sob consulta, de acordo com o modelo, o local e o que precisa ser feito. Mande os detalhes pelo
+            WhatsApp ou pelo formulário.</p>
         </div>
 
-        <div class="service-grid service-timeline">
+        <div class="service-grid">
           <article class="service-card reveal">
-            <span class="service-card__stage">Etapa 01 — Instalação</span>
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="7" width="18" height="8" rx="2"></rect>
-                <path d="M7 15v3M17 15v3M9 7V5a3 3 0 0 1 6 0v2"></path>
+            <div class="service-card__art">
+              <span class="service-card__num">01</span>
+              <svg viewBox="0 0 240 140" fill="none" aria-hidden="true">
+                <rect x="84" y="8" width="72" height="16" rx="5" fill="#06184e" />
+                <rect x="110" y="12" width="20" height="8" rx="4" fill="#28aaeb" />
+                <rect x="28" y="30" width="184" height="60" rx="18" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <path d="M46 72h148" stroke="#c9dceb" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="190" cy="48" r="4" fill="#28aaeb" />
+                <path d="M46 48h54" stroke="#c9dceb" stroke-width="4" stroke-linecap="round" />
+                <path d="M28 114h184" stroke="#28aaeb" stroke-width="2.5" stroke-dasharray="6 6" />
+                <path d="M28 104v20M212 104v20" stroke="#28aaeb" stroke-width="2.5" stroke-linecap="round" />
               </svg>
             </div>
-            <h3>Climatização</h3>
-            <p>Venda e instalação de ar-condicionado residencial e comercial, do projeto ao acabamento.</p>
-            <ul class="service-card__list">
-              <li>Split, multi-split e VRF</li>
-              <li>Dimensionamento por ambiente</li>
-              <li>Instalação elétrica e dreno</li>
-            </ul>
+            <div class="service-card__body">
+              <h3>Instalação</h3>
+              <p>Split hi-wall, piso-teto, cassete e ar de janela, com a infraestrutura e o suporte necessários.</p>
+              <span class="tag"><svg><use href="#i-clock"/></svg> Em média 2 a 3 horas</span>
+              <ul class="check-list">
+                <li>Infraestrutura e suporte da condensadora</li>
+                <li>Todas as marcas do mercado</li>
+                <li>Seguindo as normas do fabricante</li>
+              </ul>
+              <a class="link-arrow" href="servicos.html#instalacao">Detalhes da instalação</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <span class="service-card__stage">Etapa 02 — Cuidado contínuo</span>
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8">
-                </path>
-                <circle cx="12" cy="12" r="3"></circle>
+            <div class="service-card__art">
+              <span class="service-card__num">02</span>
+              <svg viewBox="0 0 240 140" fill="none" aria-hidden="true">
+                <rect x="28" y="16" width="184" height="60" rx="18" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <circle cx="190" cy="34" r="4" fill="#28aaeb" />
+                <g transform="rotate(-5 120 98)">
+                  <rect x="56" y="70" width="128" height="52" rx="10" fill="#dff2fd" stroke="#28aaeb" stroke-width="2.5" />
+                  <path d="M76 70v52M96 70v52M116 70v52M136 70v52M156 70v52M56 88h128M56 104h128" stroke="#28aaeb" stroke-width="1.5" opacity=".55" />
+                </g>
+                <path d="M210 92l3.5 9 9 3.5-9 3.5-3.5 9-3.5-9-9-3.5 9-3.5Z" fill="#28aaeb" />
+                <path d="M30 104l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5Z" fill="#06184e" />
               </svg>
             </div>
-            <h3>Manutenção</h3>
-            <p>Manutenção preventiva e corretiva para manter o equipamento eficiente o ano todo.</p>
-            <ul class="service-card__list">
-              <li>Higienização e limpeza de filtros</li>
-              <li>Verificação e recarga de gás</li>
-              <li>Diagnóstico de falhas</li>
-            </ul>
+            <div class="service-card__body">
+              <h3>Manutenção</h3>
+              <p>Preventiva, corretiva, higienização e recarga de gás para o aparelho gelar bem e durar mais.</p>
+              <span class="tag"><svg><use href="#i-calendar"/></svg> Atendimento em até 3 dias</span>
+              <ul class="check-list">
+                <li>Limpeza e higienização completa</li>
+                <li>Diagnóstico e conserto de falhas</li>
+                <li>Contratos de manutenção para empresas</li>
+              </ul>
+              <a class="link-arrow" href="servicos.html#manutencao">Detalhes da manutenção</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <span class="service-card__stage">Etapa 03 — Fim de ciclo</span>
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6">
-                </path>
+            <div class="service-card__art">
+              <span class="service-card__num">03</span>
+              <svg viewBox="0 0 240 140" fill="none" aria-hidden="true">
+                <rect x="20" y="14" width="124" height="42" rx="13" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <path d="M34 42h96" stroke="#c9dceb" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M152 36c34 0 50 18 50 44" stroke="#28aaeb" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 6" />
+                <path d="m194 74 8 10 8-10" stroke="#28aaeb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M166 96h72v36h-72z" fill="#dff2fd" stroke="#06184e" stroke-width="2.5" stroke-linejoin="round" />
+                <path d="M166 96l8-10h56l8 10" stroke="#06184e" stroke-width="2.5" stroke-linejoin="round" />
+                <path d="M194 108h16" stroke="#06184e" stroke-width="2.5" stroke-linecap="round" />
+                <rect x="44" y="74" width="40" height="58" rx="14" fill="#06184e" />
+                <rect x="56" y="64" width="16" height="12" rx="3" fill="#28aaeb" />
+                <path d="M52 98h24" stroke="#28aaeb" stroke-width="2.5" stroke-linecap="round" />
               </svg>
             </div>
-            <h3>Desinstalação</h3>
-            <p>Remoção segura do equipamento com recolhimento de gás refrigerante conforme normas técnicas.</p>
-            <ul class="service-card__list">
-              <li>Recolhimento certificado de gás</li>
-              <li>Remoção de unidades interna e externa</li>
-              <li>Descarte ambientalmente correto</li>
-            </ul>
+            <div class="service-card__body">
+              <h3>Desinstalação</h3>
+              <p>Retirada segura do aparelho para mudança, reforma ou troca, com recolhimento do gás.</p>
+              <span class="tag"><svg><use href="#i-award"/></svg> Certificado de recolhimento</span>
+              <ul class="check-list">
+                <li>Remoção das unidades interna e externa</li>
+                <li>Recolhimento de gás, conforme o modelo</li>
+                <li>Descarte do aparelho quando combinado</li>
+              </ul>
+              <a class="link-arrow" href="servicos.html#desinstalacao">Detalhes da desinstalação</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         POR QUE A REFRI ICE
+         TIPOS DE APARELHO
          ========================================================= -->
-    <section class="section section--dark">
+    <section class="section section--ice">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Por que a Refri Ice</span>
-          <h2>Atendimento técnico, não terceirizado</h2>
-          <p>Trabalhamos com equipe própria e áreas de cobertura definidas para garantir prazo e qualidade — sem
-            intermediários.</p>
+          <span class="eyebrow">Aparelhos que instalamos</span>
+          <h2>Do quarto ao salão comercial</h2>
+          <p>Trabalhamos com os principais tipos de ar-condicionado, de qualquer marca.</p>
         </div>
 
-        <div class="service-grid">
-          <article class="service-card reveal"
-            style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.1);">
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2 2 7l10 5 10-5-10-5Z"></path>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        <div class="equipment-grid">
+          <article class="equipment reveal">
+            <div class="equipment__art">
+              <svg viewBox="0 0 150 90" fill="none" aria-hidden="true">
+                <rect x="12" y="18" width="126" height="38" rx="12" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <path d="M24 46h102" stroke="#c9dceb" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="122" cy="30" r="3" fill="#28aaeb" />
+                <path d="M40 66c-4 6 2 10-2 16M75 66c0 6 0 10 0 16M110 66c4 6-2 10 2 16" stroke="#28aaeb" stroke-width="2.5" stroke-linecap="round" />
               </svg>
             </div>
-            <h3 style="color:#fff;">Cobertura definida</h3>
-            <p style="color:var(--ice-100); opacity:.8;">Atuamos em regiões específicas da capital para manter prazo de
-              atendimento curto e previsível.</p>
+            <h3>Split Hi-Wall</h3>
+            <p>O modelo de parede mais comum em casas, apartamentos e escritórios.</p>
           </article>
 
-          <article class="service-card reveal"
-            style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.1);">
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m9 12 2 2 4-4"></path>
-                <circle cx="12" cy="12" r="10"></circle>
+          <article class="equipment reveal">
+            <div class="equipment__art">
+              <svg viewBox="0 0 150 90" fill="none" aria-hidden="true">
+                <path d="M4 12h142" stroke="#8d9bb0" stroke-width="2.5" stroke-linecap="round" />
+                <rect x="14" y="12" width="122" height="34" rx="8" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <path d="M26 36h98" stroke="#c9dceb" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M34 56c10 4 14 12 26 14M116 56c-10 4-14 12-26 14M75 56v18" stroke="#28aaeb" stroke-width="2.5" stroke-linecap="round" />
               </svg>
             </div>
-            <h3 style="color:#fff;">Técnicos certificados</h3>
-            <p style="color:var(--ice-100); opacity:.8;">Equipe própria, treinada para instalação, manutenção e
-              recolhimento de gás dentro das normas.</p>
+            <h3>Piso-teto</h3>
+            <p>Ideal para ambientes amplos, lojas, salões e salas comerciais.</p>
           </article>
 
-          <article class="service-card reveal"
-            style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.1);">
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 8v4l3 3"></path>
-                <circle cx="12" cy="12" r="10"></circle>
+          <article class="equipment reveal">
+            <div class="equipment__art">
+              <svg viewBox="0 0 150 90" fill="none" aria-hidden="true">
+                <rect x="37" y="6" width="76" height="76" rx="10" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <rect x="57" y="26" width="36" height="36" rx="4" fill="#dff2fd" stroke="#28aaeb" stroke-width="2" />
+                <path d="M53 16h44M53 72h44M47 22v44M103 22v44" stroke="#06184e" stroke-width="3" stroke-linecap="round" />
+                <path d="M65 36h20M65 44h20M65 52h20" stroke="#28aaeb" stroke-width="1.6" stroke-linecap="round" />
               </svg>
             </div>
-            <h3 style="color:#fff;">Orçamento rápido</h3>
-            <p style="color:var(--ice-100); opacity:.8;">Confirme a cobertura pelo CEP e receba um orçamento sem
-              enrolação.</p>
+            <h3>Cassete</h3>
+            <p>Embutido no forro, distribui o ar em várias direções de forma discreta.</p>
           </article>
+
+          <article class="equipment reveal">
+            <div class="equipment__art">
+              <svg viewBox="0 0 150 90" fill="none" aria-hidden="true">
+                <rect x="22" y="6" width="106" height="78" rx="4" fill="#dff2fd" stroke="#8d9bb0" stroke-width="2.5" />
+                <path d="M75 6v18M75 66v18" stroke="#8d9bb0" stroke-width="2.5" />
+                <rect x="38" y="22" width="74" height="46" rx="6" fill="#fff" stroke="#06184e" stroke-width="2.5" />
+                <path d="M48 34h36M48 42h36M48 50h36M48 58h36" stroke="#c9dceb" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="98" cy="34" r="3" fill="#28aaeb" />
+                <rect x="93" y="44" width="10" height="16" rx="3" stroke="#06184e" stroke-width="2" />
+              </svg>
+            </div>
+            <h3>Ar de janela (ACJ)</h3>
+            <p>Compacto e prático, instalado em janela ou em vão na parede.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         COMO FUNCIONA
+         ========================================================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Simples do primeiro contato até a garantia</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <h3>Fale com a gente</h3>
+            <p>Chame no WhatsApp ou preencha o formulário contando o modelo e o que precisa.</p>
+          </li>
+          <li class="step reveal">
+            <h3>Receba o orçamento</h3>
+            <p>Avaliamos o serviço e passamos o valor antes de qualquer execução.</p>
+          </li>
+          <li class="step reveal">
+            <h3>Serviço agendado</h3>
+            <p>Atendimento em até 3 dias, com técnico capacitado e normas do fabricante.</p>
+          </li>
+          <li class="step reveal">
+            <h3>Garantia de 90 dias</h3>
+            <p>Se algo do serviço feito não estiver certo, a gente volta para resolver.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         EMPRESAS
+         ========================================================= -->
+    <section class="section section--navy business">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Para empresas</span>
+          <h2>Contrato de manutenção para o seu negócio</h2>
+          <p class="business__lead">
+            Há anos a Refri Ice mantém contratos de manutenção com empresas, cuidando dos aparelhos de forma recorrente
+            para evitar paradas no verão e manter o ar limpo para quem trabalha e visita o local.
+          </p>
+          <ul class="check-list">
+            <li>Planos de manutenção recorrente sob medida</li>
+            <li>Equipe capacitada em PMOC e NR-35 (trabalho em altura)</li>
+            <li>Todas as marcas e tipos de aparelho</li>
+            <li>Pagamento no cartão, Pix ou dinheiro</li>
+          </ul>
+          <a class="btn btn--sky" data-whatsapp
+            href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Tenho%20uma%20empresa%20e%20gostaria%20de%20uma%20proposta%20de%20contrato%20de%20manuten%C3%A7%C3%A3o."
+            target="_blank" rel="noopener"><svg><use href="#i-building"/></svg> Solicitar proposta para empresa</a>
+        </div>
+
+        <div class="checklist-card reveal" aria-hidden="true">
+          <div class="checklist-card__head">
+            <strong>Manutenção preventiva</strong>
+            <span>✓ Em dia</span>
+          </div>
+          <div class="checklist-card__row"><i></i><span>Limpeza de filtros</span><small>Evaporadora</small></div>
+          <div class="checklist-card__row"><i></i><span>Higienização da serpentina</span><small>Evaporadora</small></div>
+          <div class="checklist-card__row"><i></i><span>Dreno e bandeja</span><small>Escoamento</small></div>
+          <div class="checklist-card__row"><i></i><span>Verificação do gás</span><small>Pressão</small></div>
+          <div class="checklist-card__row"><i></i><span>Parte elétrica</span><small>Conexões</small></div>
+          <div class="checklist-card__foot"><b>PMOC</b><b>NR-35</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ÁREA DE COBERTURA
+         ========================================================= -->
+    <section class="section section--ice" id="cobertura">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Onde atendemos</span>
+          <h2 class="section-title">Zona Oeste, Centro de SP e Grande São Paulo</h2>
+          <p class="section-lead">Confira as regiões atendidas hoje ou consulte direto pelo CEP do local do serviço.</p>
+          <div class="coverage__regions">
+            <div class="coverage__group">
+              <h3>São Paulo (capital)</h3>
+              <div class="chips">
+                <span class="chip">Pinheiros</span>
+                <span class="chip">Lapa</span>
+                <span class="chip">Morumbi</span>
+                <span class="chip">Centro</span>
+              </div>
+            </div>
+            <div class="coverage__group">
+              <h3>Grande São Paulo</h3>
+              <div class="chips">
+                <span class="chip">Osasco</span>
+                <span class="chip">Barueri</span>
+                <span class="chip">Alphaville</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cep-card" data-coverage-panel>
+            <div class="cep-card__head">
+              <span class="cep-card__icon"><svg><use href="#i-pin"/></svg></span>
+              <div>
+                <h3 class="cep-card__title">Confirme pelo CEP</h3>
+                <p>A consulta é feita na hora, direto nos Correios.</p>
+              </div>
+            </div>
+            <form class="cep-form" data-cep-form novalidate>
+              <label class="sr-only" for="cep-cobertura">CEP do local</label>
+              <input type="text" id="cep-cobertura" data-cep-input inputmode="numeric" autocomplete="postal-code"
+                placeholder="00000-000" maxlength="9">
+              <button type="submit" class="btn btn--primary" data-cep-submit>Verificar</button>
+            </form>
+            <div data-cep-result aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="coverage-map reveal">
+          <div class="coverage-map__canvas" data-coverage-map role="region"
+            aria-label="Mapa das regiões atendidas: Alphaville, Barueri, Osasco, Lapa, Pinheiros, Morumbi e Centro de São Paulo">
+            <p class="coverage-map__fallback">Carregando mapa…</p>
+          </div>
+          <p class="coverage-map__note"><svg><use href="#i-pin"/></svg> Áreas aproximadas. Confirme sempre pelo CEP.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         DIFERENCIAIS
+         ========================================================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading section-heading--center">
+          <span class="eyebrow">Por que a Refri Ice</span>
+          <h2>Experiência de quem está no mercado desde 2009</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-award"/></svg></span>
+            <div>
+              <h3>No mercado desde 2009</h3>
+              <p>Uma trajetória construída com trabalho sério e a confiança dos clientes.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-layers"/></svg></span>
+            <div>
+              <h3>Todas as marcas</h3>
+              <p>Especialistas nas principais marcas e tipos de aparelho do mercado.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-book"/></svg></span>
+            <div>
+              <h3>Normas do fabricante</h3>
+              <p>Cada serviço segue as especificações técnicas de quem fabricou o aparelho.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-shield"/></svg></span>
+            <div>
+              <h3>Garantia de 90 dias</h3>
+              <p>Todos os serviços têm garantia. Qualquer problema, é só chamar.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-helmet"/></svg></span>
+            <div>
+              <h3>Capacitação PMOC e NR-35</h3>
+              <p>Equipe preparada para manutenção de empresas e trabalho em altura com segurança.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-card"/></svg></span>
+            <div>
+              <h3>Pague como preferir</h3>
+              <p>Aceitamos cartão, Pix e dinheiro.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PERGUNTAS FREQUENTES
+         ========================================================= -->
+    <section class="section section--ice" id="duvidas">
+      <div class="container">
+        <div class="section-heading section-heading--center">
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2>Perguntas que sempre recebemos</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Quanto custa instalar ou fazer manutenção?</summary>
+            <p>Os valores são sob consulta, porque dependem do tipo de aparelho, da capacidade (BTUs), do local da
+              instalação e da infraestrutura necessária. Envie essas informações pelo WhatsApp ou pelo formulário e
+              passamos o orçamento.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo leva uma instalação?</summary>
+            <p>Em média de 2 a 3 horas, variando conforme o modelo do aparelho e as condições do local.</p>
+          </details>
+          <details>
+            <summary>Em quanto tempo vocês conseguem atender?</summary>
+            <p>Para manutenção, o atendimento acontece em no máximo 3 dias após a solicitação.</p>
+          </details>
+          <details>
+            <summary>Vocês atendem qualquer marca?</summary>
+            <p>Sim. Trabalhamos com todas as marcas e seguimos as normas técnicas de cada fabricante.</p>
+          </details>
+          <details>
+            <summary>Os serviços têm garantia?</summary>
+            <p>Sim, todos os serviços têm garantia de 90 dias.</p>
+          </details>
+          <details>
+            <summary>Na desinstalação, vocês emitem certificado do gás?</summary>
+            <p>Sim. Quando há recolhimento do gás refrigerante (conforme o modelo do aparelho), emitimos laudo/certificado
+              de recolhimento. O descarte do aparelho também pode ser feito, quando combinado.</p>
+          </details>
+          <details>
+            <summary>Quais formas de pagamento vocês aceitam?</summary>
+            <p>Cartão, Pix e dinheiro.</p>
+          </details>
+          <details>
+            <summary>Atendem a minha região?</summary>
+            <p>Atendemos Pinheiros, Lapa, Morumbi e Centro, na capital, além de Osasco, Barueri e Alphaville. Use o
+              verificador de CEP acima ou chame no WhatsApp para confirmar.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -213,14 +659,21 @@
     <!-- =========================================================
          CTA FINAL
          ========================================================= -->
-    <section class="section--tight">
-      <div class="container"
-        style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; background:var(--frost-0); border:1px solid var(--line); border-radius:var(--radius-lg); padding:40px 44px;">
-        <div>
-          <h2 style="font-size:1.5rem; margin-bottom:6px;">Pronto para climatizar seu ambiente?</h2>
-          <p style="color:var(--slate-400);">Verifique a cobertura e fale com um técnico ainda hoje.</p>
+    <section class="section">
+      <div class="container">
+        <div class="cta-band reveal">
+          <img class="cta-band__mark" src="img/logo-mark-light.png" alt="">
+          <div>
+            <h2>Seu ar-condicionado precisa de atenção?</h2>
+            <p>Conte o que está acontecendo e receba o orçamento pelo WhatsApp.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a class="btn btn--whatsapp" data-whatsapp
+              href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+              target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> (11) 99132-1677</a>
+            <span class="cta-band__alt">ou <a href="contato.html">envie o formulário de orçamento</a></span>
+          </div>
         </div>
-        <a href="contato.html" class="btn btn-ghost">Solicitar orçamento</a>
       </div>
     </section>
   </main>
@@ -231,55 +684,73 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-brand">
-            <img src="img/Refri ice.jpeg" alt="Refri Ice">
-            <strong>Refri Ice</strong>
+        <div class="footer-about">
+          <a href="index.html" class="brand brand--light" aria-label="Refri Ice — página inicial">
+            <img src="img/logo-mark-light.png" alt="" width="41" height="46">
+            <span class="brand__text">
+              <span class="brand__name">REFRI <span>ICE</span></span>
+              <span class="brand__tag">Refrigeração &amp; Climatização</span>
+            </span>
+          </a>
+          <p>Instalação, manutenção e desinstalação de ar-condicionado desde 2009, com garantia de 90 dias em todos os
+            serviços.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/refr.iice/" target="_blank" rel="noopener" aria-label="Instagram da Refri Ice"><svg><use href="#i-insta"/></svg></a>
+            <a href="https://wa.me/5511991321677" target="_blank" rel="noopener" aria-label="WhatsApp da Refri Ice"><svg><use href="#i-wa"/></svg></a>
           </div>
-          <p>Refrigeração e climatização na capital de São Paulo. Instalação, manutenção e desinstalação com equipe
-            própria.</p>
         </div>
 
         <div class="footer-col">
-          <h4>Navegação</h4>
+          <h2>Serviços</h2>
           <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="servicos.html">Serviços</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="servicos.html#instalacao">Instalação</a></li>
+            <li><a href="servicos.html#manutencao">Manutenção</a></li>
+            <li><a href="servicos.html#desinstalacao">Desinstalação</a></li>
+            <li><a href="servicos.html#empresas">Para empresas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Empresa</h2>
+          <ul>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="index.html#cobertura">Onde atendemos</a></li>
+            <li><a href="index.html#duvidas">Dúvidas frequentes</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Serviços</h4>
-          <ul>
-            <li><a href="servicos.html">Climatização</a></li>
-            <li><a href="servicos.html">Manutenção</a></li>
-            <li><a href="servicos.html">Desinstalação</a></li>
+          <h2>Atendimento</h2>
+          <ul class="footer-contact">
+            <li><svg><use href="#i-wa"/></svg><span><a href="https://wa.me/5511991321677" target="_blank" rel="noopener">(11) 99132-1677</a><br><a href="https://wa.me/5511985211508" target="_blank" rel="noopener">(11) 98521-1508</a></span></li>
+            <li><svg><use href="#i-mail"/></svg><a href="mailto:mkt.refriice@gmail.com">mkt.refriice@gmail.com</a></li>
+            <li><svg><use href="#i-clock"/></svg><span>Seg. a sex. 8h às 18h<br>Sábado 8h às 16h</span></li>
+            <li><svg><use href="#i-pin"/></svg><span>Av. Arnaldo de Freitas</span></li>
           </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contato</h4>
-          <address>
-            (11) 0000-0000<br>
-            contato@refriice.com.br<br>
-            Atendimento na capital de São Paulo
-          </address>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span data-current-year></span> Refri Ice — Refrigeração &amp; Climatização</span>
-        <span>Todos os direitos reservados</span>
+        <span>© <span data-current-year>2026</span> Refri Ice · Andrew Fernando Menezez Luz · CNPJ 32.384.823/0001-16</span>
+        <span>Cartão, Pix e dinheiro</span>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <a class="wa-float" data-whatsapp
+    href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+    target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+    <svg><use href="#i-wa"/></svg><span>Orçamento</span>
+  </a>
+
+  <script src="js/site-config.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/cep-checker.js"></script>
   <script src="js/script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/coverage-map.js"></script>
 </body>
 
 </html>

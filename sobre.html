@@ -4,179 +4,360 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre | Refri Ice</title>
+  <title>Sobre | Refri Ice — Refrigeração & Climatização desde 2009</title>
   <meta name="description"
-    content="Conheça a Refri Ice, empresa de refrigeração e climatização que atua na capital de São Paulo.">
+    content="Conheça a Refri Ice: desde 2009 instalando e cuidando de ar-condicionado com qualidade, equipe capacitada em PMOC e NR-35 e respeito às normas de cada fabricante.">
+  <meta name="theme-color" content="#06184e">
+  <link rel="canonical" href="sobre.html">
 
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Sobre | Refri Ice — Refrigeração & Climatização desde 2009">
+  <meta property="og:description"
+    content="Conheça a Refri Ice: desde 2009 instalando e cuidando de ar-condicionado com qualidade, equipe capacitada em PMOC e NR-35 e respeito às normas de cada fabricante.">
+  <meta property="og:image" content="img/Refri ice.jpeg">
+
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="icon" href="img/Refri ice.jpeg" type="image/jpeg">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
+  <!-- =========================================================
+       ÍCONES (referenciados com <use href="#i-...">)
+       ========================================================= -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5M9 7h7M9 11h5"/></symbol>
+      <symbol id="i-helmet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20v3H2z"/><path d="M4 18v-3a8 8 0 0 1 16 0v3"/><path d="M10 7.3V4h4v3.3"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.34 19a10 10 0 1 1 17.32 0"/><path d="m12 14 4-4"/><circle cx="12" cy="14" r="1.5"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- =========================================================
+       BARRA SUPERIOR + CABEÇALHO
+       ========================================================= -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__group">
+        <span class="topbar__item"><svg><use href="#i-clock"/></svg> Seg. a sex. 8h às 18h · Sáb. 8h às 16h</span>
+        <span class="topbar__item topbar__hide-md"><svg><use href="#i-pin"/></svg> Pinheiros, Lapa, Morumbi, Centro, Osasco, Barueri e Alphaville</span>
+      </div>
+      <div class="topbar__group">
+        <a class="topbar__item" href="https://www.instagram.com/refr.iice/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg> @refr.iice</a>
+      </div>
+    </div>
+  </div>
 
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="site-header__brand">
-        <img src="img/Refri ice.jpeg" alt="Refri Ice">
-        <span class="site-header__brand-text">
-          <strong>Refri Ice</strong>
-          <span>Refrigeração &amp; Climatização</span>
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Refri Ice — página inicial">
+        <img src="img/logo-mark.png" alt="" width="41" height="46">
+        <span class="brand__text">
+          <span class="brand__name">REFRI <span>ICE</span></span>
+          <span class="brand__tag">Refrigeração &amp; Climatização</span>
         </span>
       </a>
 
-      <nav class="main-nav" aria-label="Navegação principal">
+      <nav class="main-nav" id="menu" aria-label="Navegação principal">
         <ul class="main-nav__list">
           <li><a href="index.html">Início</a></li>
           <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="index.html#cobertura">Onde atendemos</a></li>
           <li><a href="sobre.html">Sobre</a></li>
           <li><a href="contato.html">Contato</a></li>
         </ul>
+        <a class="btn btn--whatsapp main-nav__cta" data-whatsapp
+          href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+          target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Chamar no WhatsApp</a>
       </nav>
 
       <div class="site-header__actions">
-        <a href="contato.html" class="btn btn-primary">Solicitar orçamento</a>
-        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <a class="header-phone" href="https://wa.me/5511991321677" target="_blank" rel="noopener">
+          <span class="header-phone__icon"><svg><use href="#i-wa"/></svg></span>
+          <span><small>WhatsApp</small><strong>(11) 99132-1677</strong></span>
+        </a>
+        <a href="contato.html" class="btn btn--primary btn--sm">Pedir orçamento</a>
+        <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
+    <!-- =========================================================
+         CABEÇALHO DA PÁGINA
+         ========================================================= -->
     <section class="page-hero">
+      <img class="page-hero__mark" src="img/logo-mark.png" alt="">
       <div class="container">
-        <span class="eyebrow">Sobre a Refri Ice</span>
-        <h1>Especialistas em climatização, focados na capital paulista</h1>
-        <p>Preferimos atender bem uma área definida a atender mal a cidade inteira.</p>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Início</a></li>
+          <li aria-current="page">Sobre</li>
+        </ol>
+        <h1>Desde 2009 cuidando do clima de casas e empresas</h1>
+        <p>Uma empresa especialista em ar-condicionado, que cresceu com trabalho bem feito e com a confiança de quem nos
+          chama.</p>
       </div>
     </section>
 
+    <!-- =========================================================
+         HISTÓRIA
+         ========================================================= -->
     <section class="section">
-      <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;">
-        <div>
-          <span class="eyebrow">Nossa forma de trabalhar</span>
-          <h2 style="font-size:1.9rem; margin-bottom:16px;">Cobertura definida, atendimento consistente</h2>
-          <p style="color:var(--slate-400); margin-bottom:16px;">
-            A Refri Ice nasceu para resolver um problema comum no setor: prazos
-            longos e equipes terceirizadas sem padrão. Por isso escolhemos atuar
-            somente em regiões específicas da capital de São Paulo, onde
-            conseguimos manter agenda enxuta e equipe própria.
+      <div class="container split">
+        <div class="story">
+          <span class="eyebrow">Nossa história</span>
+          <h2 class="section-title">Técnica, compromisso e cliente satisfeito</h2>
+          <p class="story__lead">
+            A Refri Ice nasceu em 2009 com um propósito claro: oferecer instalação de ar-condicionado de qualidade, unindo
+            conhecimento técnico, compromisso e satisfação dos clientes.
           </p>
-          <p style="color:var(--slate-400);">
-            Isso significa atendimentos mais rápidos, técnicos que conhecem a
-            região e um padrão de serviço igual em toda a base de clientes.
+          <p>
+            Desde o início, construímos nossa trajetória com um trabalho sério e dedicado, conquistando a confiança dos
+            clientes e ampliando nossa experiência no segmento de climatização.
+          </p>
+          <p>
+            Ao longo dos anos, evoluímos junto com as novas tecnologias e as necessidades do mercado, sem perder o
+            compromisso que marcou nossa origem: entregar um serviço bem executado, com responsabilidade, qualidade e
+            profissionalismo.
+          </p>
+          <p>
+            Hoje, com mais de uma década de experiência, seguimos fortalecendo nossa atuação para ser referência em
+            climatização na capital e na Grande São Paulo.
           </p>
         </div>
-        <div class="service-grid" style="grid-template-columns:1fr; gap:16px;">
-          <div class="service-card">
-            <h3>Equipe própria</h3>
-            <p>Sem intermediação: quem instala é quem também dá manutenção.</p>
-          </div>
-          <div class="service-card">
-            <h3>Área de cobertura definida</h3>
-            <p>Atuação em bairros específicos da capital para manter qualidade e prazo.</p>
-          </div>
-          <div class="service-card">
-            <h3>Processo padronizado</h3>
-            <p>Do orçamento ao pós-serviço, cada etapa segue um checklist técnico.</p>
-          </div>
+
+        <div class="stats">
+          <div class="stat stat--navy reveal"><strong>2009</strong>Ano de fundação</div>
+          <div class="stat reveal"><strong><span data-years-since="2009">17</span> anos</strong>de experiência em climatização</div>
+          <div class="stat reveal"><strong>90 dias</strong>de garantia em todos os serviços</div>
+          <div class="stat reveal"><strong>7</strong>regiões atendidas em SP e Grande SP</div>
         </div>
       </div>
     </section>
 
-    <section class="section section--dark">
+    <!-- =========================================================
+         TRAJETÓRIA
+         ========================================================= -->
+    <section class="section section--navy">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Nossos valores</span>
-          <h2>O que guia cada atendimento</h2>
+          <span class="eyebrow">Nossa trajetória</span>
+          <h2>Mais de uma década de evolução</h2>
         </div>
-        <div class="service-grid">
-          <article class="service-card reveal"
-            style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.1);">
-            <h3 style="color:#fff;">Transparência</h3>
-            <p style="color:var(--ice-100); opacity:.8;">Orçamento claro antes de iniciar qualquer serviço, sem
-              surpresas na conta final.</p>
+        <ol class="timeline">
+          <li class="reveal">
+            <strong>2009 · O começo</strong>
+            <p>Nasce a Refri Ice, focada em instalação de ar-condicionado com qualidade técnica.</p>
+          </li>
+          <li class="reveal">
+            <strong>Confiança</strong>
+            <p>O trabalho sério e dedicado conquista clientes e amplia a experiência em climatização.</p>
+          </li>
+          <li class="reveal">
+            <strong>Evolução</strong>
+            <p>A empresa acompanha as novas tecnologias e as necessidades do mercado, mantendo o mesmo compromisso.</p>
+          </li>
+          <li class="reveal">
+            <strong>Hoje</strong>
+            <p>Instalação, manutenção e desinstalação de todas as marcas, preparada para novos desafios.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         DIFERENCIAIS E QUALIFICAÇÕES
+         ========================================================= -->
+    <section class="section section--ice">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">O que nos diferencia</span>
+          <h2>Especialistas em diversas marcas, sempre dentro das normas</h2>
+          <p>Nossa equipe se capacita continuamente para entregar atendimentos de qualidade e seguros.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-helmet"/></svg></span>
+            <div>
+              <h3>NR-35</h3>
+              <p>Capacitação em segurança para trabalho em altura, essencial na instalação de condensadoras em fachadas.</p>
+            </div>
           </article>
-          <article class="service-card reveal"
-            style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.1);">
-            <h3 style="color:#fff;">Técnica antes de tudo</h3>
-            <p style="color:var(--ice-100); opacity:.8;">Diagnóstico correto evita retrabalho e prolonga a vida útil do
-              equipamento.</p>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-building"/></svg></span>
+            <div>
+              <h3>PMOC</h3>
+              <p>Capacitação no Plano de Manutenção, Operação e Controle, exigido para ambientes climatizados de uso
+                coletivo.</p>
+            </div>
           </article>
-          <article class="service-card reveal"
-            style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.1);">
-            <h3 style="color:#fff;">Responsabilidade ambiental</h3>
-            <p style="color:var(--ice-100); opacity:.8;">Recolhimento e descarte de gás refrigerante seguindo boas
-              práticas.</p>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-book"/></svg></span>
+            <div>
+              <h3>Normas do fabricante</h3>
+              <p>Respeitamos as especificações técnicas de cada marca em todos os serviços.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-layers"/></svg></span>
+            <div>
+              <h3>Todas as marcas</h3>
+              <p>Experiência com as principais marcas e tipos de aparelho do mercado.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-shield"/></svg></span>
+            <div>
+              <h3>Garantia de 90 dias</h3>
+              <p>Confiança no que fazemos: todos os serviços saem com garantia.</p>
+            </div>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__icon"><svg><use href="#i-award"/></svg></span>
+            <div>
+              <h3>Qualidade no atendimento</h3>
+              <p>Responsabilidade e profissionalismo do orçamento até a conclusão do serviço.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section--tight">
-      <div class="container"
-        style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; background:var(--frost-0); border:1px solid var(--line); border-radius:var(--radius-lg); padding:40px 44px;">
-        <div>
-          <h2 style="font-size:1.5rem; margin-bottom:6px;">Sua região está na nossa área de cobertura?</h2>
-          <p style="color:var(--slate-400);">Consulte pelo CEP na página inicial ou fale direto com a gente.</p>
+    <!-- =========================================================
+         DADOS DA EMPRESA
+         ========================================================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Dados da empresa</span>
+          <h2>Transparência em primeiro lugar</h2>
         </div>
-        <a href="index.html#servicos" class="btn btn-ghost">Consultar CEP</a>
+        <div class="company-card">
+          <div><small>Nome fantasia</small><strong>Refri Ice Refrigeração &amp; Climatização</strong></div>
+          <div><small>Razão social</small><strong>Andrew Fernando Menezez Luz</strong></div>
+          <div><small>CNPJ</small><strong>32.384.823/0001-16</strong></div>
+          <div><small>Formas de pagamento</small><strong>Cartão, Pix e dinheiro</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CTA FINAL
+         ========================================================= -->
+    <section class="section section--flush-top">
+      <div class="container">
+        <div class="cta-band reveal">
+          <img class="cta-band__mark" src="img/logo-mark-light.png" alt="">
+          <div>
+            <h2>Vamos cuidar do seu ar-condicionado?</h2>
+            <p>Fale com a Refri Ice e receba seu orçamento.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a class="btn btn--whatsapp" data-whatsapp
+              href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+              target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> (11) 99132-1677</a>
+            <span class="cta-band__alt">ou <a href="contato.html">envie o formulário de orçamento</a></span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- =========================================================
+       RODAPÉ
+       ========================================================= -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-brand">
-            <img src="img/Refri ice.jpeg" alt="Refri Ice">
-            <strong>Refri Ice</strong>
+        <div class="footer-about">
+          <a href="index.html" class="brand brand--light" aria-label="Refri Ice — página inicial">
+            <img src="img/logo-mark-light.png" alt="" width="41" height="46">
+            <span class="brand__text">
+              <span class="brand__name">REFRI <span>ICE</span></span>
+              <span class="brand__tag">Refrigeração &amp; Climatização</span>
+            </span>
+          </a>
+          <p>Instalação, manutenção e desinstalação de ar-condicionado desde 2009, com garantia de 90 dias em todos os
+            serviços.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/refr.iice/" target="_blank" rel="noopener" aria-label="Instagram da Refri Ice"><svg><use href="#i-insta"/></svg></a>
+            <a href="https://wa.me/5511991321677" target="_blank" rel="noopener" aria-label="WhatsApp da Refri Ice"><svg><use href="#i-wa"/></svg></a>
           </div>
-          <p>Refrigeração e climatização na capital de São Paulo. Instalação, manutenção e desinstalação com equipe
-            própria.</p>
         </div>
 
         <div class="footer-col">
-          <h4>Navegação</h4>
+          <h2>Serviços</h2>
           <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="servicos.html">Serviços</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="servicos.html#instalacao">Instalação</a></li>
+            <li><a href="servicos.html#manutencao">Manutenção</a></li>
+            <li><a href="servicos.html#desinstalacao">Desinstalação</a></li>
+            <li><a href="servicos.html#empresas">Para empresas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Empresa</h2>
+          <ul>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="index.html#cobertura">Onde atendemos</a></li>
+            <li><a href="index.html#duvidas">Dúvidas frequentes</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Serviços</h4>
-          <ul>
-            <li><a href="servicos.html#climatizacao">Climatização</a></li>
-            <li><a href="servicos.html#manutencao">Manutenção</a></li>
-            <li><a href="servicos.html#desinstalacao">Desinstalação</a></li>
+          <h2>Atendimento</h2>
+          <ul class="footer-contact">
+            <li><svg><use href="#i-wa"/></svg><span><a href="https://wa.me/5511991321677" target="_blank" rel="noopener">(11) 99132-1677</a><br><a href="https://wa.me/5511985211508" target="_blank" rel="noopener">(11) 98521-1508</a></span></li>
+            <li><svg><use href="#i-mail"/></svg><a href="mailto:mkt.refriice@gmail.com">mkt.refriice@gmail.com</a></li>
+            <li><svg><use href="#i-clock"/></svg><span>Seg. a sex. 8h às 18h<br>Sábado 8h às 16h</span></li>
+            <li><svg><use href="#i-pin"/></svg><span>Av. Arnaldo de Freitas</span></li>
           </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contato</h4>
-          <address>
-            (11) 0000-0000<br>
-            contato@refriice.com.br<br>
-            Atendimento na capital de São Paulo
-          </address>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span data-current-year></span> Refri Ice — Refrigeração &amp; Climatização</span>
-        <span>Todos os direitos reservados</span>
+        <span>© <span data-current-year>2026</span> Refri Ice · Andrew Fernando Menezez Luz · CNPJ 32.384.823/0001-16</span>
+        <span>Cartão, Pix e dinheiro</span>
       </div>
     </div>
   </footer>
 
+  <a class="wa-float" data-whatsapp
+    href="https://wa.me/5511991321677?text=Ol%C3%A1%2C%20Refri%20Ice!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+    target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+    <svg><use href="#i-wa"/></svg><span>Orçamento</span>
+  </a>
+
+  <script src="js/site-config.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/script.js"></script>
 </body>

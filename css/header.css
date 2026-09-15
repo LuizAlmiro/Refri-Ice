@@ -1,121 +1,207 @@
 /* =========================================================
    REFRI ICE — header.css
-   Cabeçalho fixo e navegação
+   Barra superior, cabeçalho fixo e navegação
    ========================================================= */
 
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 18px 0;
-  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+/* ---------- Barra superior ---------- */
+.topbar {
+  background: var(--navy-950);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.84rem;
 }
 
-.site-header.is-scrolled {
-  background: rgba(11, 31, 68, 0.92);
-  backdrop-filter: blur(10px);
-  padding: 12px 0;
-  box-shadow: 0 10px 30px -18px rgba(11, 31, 68, 0.6);
-}
-
-.site-header .container {
+.topbar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  min-height: 40px;
 }
 
-.site-header__brand {
+.topbar__group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 28px;
 }
 
-.site-header__brand img {
-  height: 40px;
-  width: 40px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: var(--frost-0);
-  padding: 3px;
+.topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.site-header__brand-text {
+.topbar__item svg {
+  width: 15px;
+  height: 15px;
+  color: var(--sky-500);
+}
+
+a.topbar__item:hover {
+  color: var(--white);
+}
+
+/* ---------- Cabeçalho ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(1.4) blur(12px);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  border-color: var(--line);
+  box-shadow: 0 10px 30px -22px rgba(6, 24, 78, 0.45);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  height: var(--header-h);
+}
+
+/* ---------- Marca ---------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand img {
+  width: auto;
+  height: 46px;
+}
+
+.brand__text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1;
 }
 
-.site-header__brand-text strong {
+.brand__name {
   font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--frost-0);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+  color: var(--navy-900);
+}
+
+.brand__name span {
+  color: var(--sky-500);
+}
+
+.brand__tag {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--navy-900);
+  opacity: 0.8;
   letter-spacing: 0.01em;
 }
 
-.site-header__brand-text span {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ice-300);
+.brand--light .brand__name,
+.brand--light .brand__tag {
+  color: var(--white);
 }
 
+/* ---------- Navegação ---------- */
 .main-nav__list {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 6px;
 }
 
 .main-nav__list a {
-  font-size: 0.92rem;
+  display: block;
+  padding: 10px 14px;
+  border-radius: 999px;
   font-weight: 500;
-  color: var(--ice-100);
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.2s ease;
+  color: var(--text);
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.main-nav__list a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--ice-500);
-  transition: width 0.25s ease;
+.main-nav__list a:hover {
+  color: var(--navy-900);
+  background: var(--ice-50);
 }
 
-.main-nav__list a:hover,
 .main-nav__list a.is-active {
-  color: var(--frost-0);
+  color: var(--navy-900);
+  font-weight: 600;
+  background: var(--sky-100);
 }
 
-.main-nav__list a:hover::after,
-.main-nav__list a.is-active::after {
-  width: 100%;
+.main-nav__cta {
+  display: none;
 }
 
 .site-header__actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
 }
 
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.15;
+}
+
+.header-phone__icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.14);
+  color: var(--wa-dark);
+}
+
+.header-phone__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-phone small {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.header-phone strong {
+  font-size: 0.98rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.header-phone:hover strong {
+  color: var(--wa-dark);
+}
+
+/* ---------- Botão do menu mobile ---------- */
 .nav-toggle {
   display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 5px;
-  width: 26px;
 }
 
 .nav-toggle span {
+  width: 20px;
   height: 2px;
-  width: 100%;
-  background: var(--frost-0);
+  background: var(--navy-900);
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
@@ -130,4 +216,83 @@
 
 .nav-toggle.is-open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1140px) {
+  .header-phone {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar__hide-md {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: var(--nav-top, var(--header-h));
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--white);
+    padding: 20px var(--gutter) 32px;
+    border-top: 1px solid var(--line);
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  .main-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .main-nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .main-nav__list a {
+    font-size: 1.15rem;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .main-nav__cta {
+    display: flex;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    display: none;
+  }
+
+  :root {
+    --header-h: 66px;
+  }
+
+  .brand img {
+    height: 40px;
+  }
+
+  .brand__name {
+    font-size: 1.25rem;
+  }
+
+  .site-header__actions .btn {
+    display: none;
+  }
 }

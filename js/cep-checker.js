@@ -1,146 +1,172 @@
 /* =========================================================
    REFRI ICE — cep-checker.js
-   Painel de Cobertura: consulta o CEP (API ViaCEP) e verifica
-   se o bairro retornado está na lista de áreas atendidas.
+   Verificador de cobertura: consulta o CEP na API ViaCEP e
+   compara cidade/bairro com a área definida em site-config.js.
 
-   >>> EDITE A LISTA "BAIRROS_ATENDIDOS" ABAIXO <<<
-   Adicione/remova os bairros da capital de São Paulo que a
-   Refri Ice realmente atende. A comparação ignora acentos e
-   maiúsculas/minúsculas.
+   Também expõe REFRI_ICE.consultarCep(cep), usado pelo
+   formulário de contato.
    ========================================================= */
 
 (function () {
-  // Lista de exemplo — substitua pelos bairros reais atendidos.
-  const BAIRROS_ATENDIDOS = [
-    'Moema', 'Vila Mariana', 'Saúde', 'Campo Belo', 'Santo Amaro',
-    'Brooklin', 'Itaim Bibi', 'Jardim Paulista', 'Pinheiros',
-    'Vila Madalena', 'Butantã', 'Vila Olímpia', 'Morumbi',
-    'Cidade Monções', 'Campo Grande', 'Jabaquara', 'Chácara Klabin'
-  ];
+  const config = window.REFRI_ICE || {};
+  const cobertura = config.cobertura || { cidadesInteiras: [], bairrosPorCidade: {} };
 
   function normalizar(texto) {
-    return texto
+    return (texto || '')
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[̀-ͯ]/g, '')
       .toLowerCase()
+      .replace(/\s+/g, ' ')
       .trim();
   }
 
-  const BAIRROS_NORMALIZADOS = BAIRROS_ATENDIDOS.map(normalizar);
+  // Compara palavras inteiras ("Sé" não deve casar com "Jardim Sesmarias")
+  function contemTermo(texto, termo) {
+    const escapado = termo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp('(^|[^a-z0-9])' + escapado + '($|[^a-z0-9])').test(texto);
+  }
 
-  function atende(bairro) {
-    const alvo = normalizar(bairro);
-    return BAIRROS_NORMALIZADOS.some(function (b) {
-      return alvo.includes(b) || b.includes(alvo);
+  function avaliar(dados) {
+    if (dados.uf !== 'SP') return 'nao';
+
+    const cidade = normalizar(dados.localidade);
+    const bairro = normalizar(dados.bairro);
+
+    if (cobertura.cidadesInteiras.some(function (c) { return normalizar(c) === cidade; })) {
+      return 'sim';
+    }
+
+    const chave = Object.keys(cobertura.bairrosPorCidade).find(function (c) {
+      return normalizar(c) === cidade;
     });
+    if (!chave) return 'nao';
+
+    // CEP geral da cidade (sem bairro): precisa confirmar com a equipe
+    if (!bairro) return 'consultar';
+
+    return cobertura.bairrosPorCidade[chave].some(function (b) {
+      return contemTermo(bairro, normalizar(b));
+    }) ? 'sim' : 'nao';
+  }
+
+  function formatarCep(valor) {
+    const digitos = (valor || '').replace(/\D/g, '').slice(0, 8);
+    return digitos.length > 5 ? digitos.slice(0, 5) + '-' + digitos.slice(5) : digitos;
+  }
+
+  /* Retorna Promise<{ situacao: 'sim'|'nao'|'consultar', dados }>
+     ou rejeita com Error('invalido' | 'nao-encontrado' | 'rede') */
+  function consultarCep(cep) {
+    const digitos = (cep || '').replace(/\D/g, '');
+    if (digitos.length !== 8) return Promise.reject(new Error('invalido'));
+
+    return fetch('https://viacep.com.br/ws/' + digitos + '/json/')
+      .catch(function () { throw new Error('rede'); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.status === 400 ? 'invalido' : 'rede');
+        return res.json();
+      })
+      .then(function (dados) {
+        if (dados.erro) throw new Error('nao-encontrado');
+        return { situacao: avaliar(dados), dados: dados };
+      });
+  }
+
+  config.consultarCep = consultarCep;
+  config.formatarCep = formatarCep;
+
+  /* ---------- Painéis de verificação na página ---------- */
+  function el(tag, classe, texto) {
+    const node = document.createElement(tag);
+    if (classe) node.className = classe;
+    if (texto) node.textContent = texto;
+    return node;
+  }
+
+  function renderResultado(alvo, tipo, icone, titulo, detalhe, link) {
+    alvo.replaceChildren();
+    const box = el('div', 'cep-result cep-result--' + tipo);
+    box.appendChild(el('span', 'cep-result__icon', icone));
+
+    const corpo = el('div');
+    if (titulo) corpo.appendChild(el('strong', null, titulo));
+    if (detalhe) corpo.appendChild(el('small', null, detalhe));
+    if (link) {
+      const a = el('a', null, link.texto);
+      a.href = link.href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      corpo.appendChild(a);
+    }
+    box.appendChild(corpo);
+    alvo.appendChild(box);
   }
 
   function initPanel(panel) {
     const form = panel.querySelector('[data-cep-form]');
     const input = panel.querySelector('[data-cep-input]');
     const button = panel.querySelector('[data-cep-submit]');
-    const led = panel.querySelector('[data-cep-led]');
-    const readout = panel.querySelector('[data-cep-readout]');
+    const result = panel.querySelector('[data-cep-result]');
 
-    if (!form || !input || !readout) return;
+    if (!form || !input || !result) return;
 
     input.addEventListener('input', function () {
-      input.value = input.value.replace(/\D/g, '').slice(0, 8);
+      input.value = formatarCep(input.value);
     });
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      const cep = input.value.replace(/\D/g, '');
+      const cep = formatarCep(input.value);
 
-      if (cep.length !== 8) {
-        setEstado('erro', 'CEP inválido. Digite os 8 números do CEP.');
+      if (cep.length !== 9) {
+        renderResultado(result, 'no', '!', 'CEP incompleto', 'Digite os 8 números do CEP.');
+        input.focus();
         return;
       }
 
-      setEstado('checando');
-      button.disabled = true;
+      renderResultado(result, 'loading', '', null, 'Consultando CEP…');
+      if (button) button.disabled = true;
 
-      fetch('https://viacep.com.br/ws/' + cep + '/json/')
-        .then(function (res) {
-          if (!res.ok) throw new Error('Falha na consulta');
-          return res.json();
-        })
-        .then(function (data) {
-          button.disabled = false;
+      consultarCep(cep)
+        .then(function (resposta) {
+          const d = resposta.dados;
+          const local = [(d.bairro || '').replace(/\.$/, ''), d.localidade].filter(Boolean).join(', ');
 
-          if (data.erro) {
-            setEstado('erro', 'CEP não encontrado. Confira o número digitado.');
-            return;
-          }
-
-          if (data.uf !== 'SP' || normalizar(data.localidade) !== normalizar('São Paulo')) {
-            setEstado('fora-cidade', null, data);
-            return;
-          }
-
-          if (atende(data.bairro)) {
-            setEstado('atendido', null, data);
+          if (resposta.situacao === 'sim') {
+            renderResultado(result, 'ok', '✓', 'Atendemos ' + local + '!', d.logradouro || null, {
+              texto: 'Pedir orçamento para este endereço →',
+              href: config.linkWhatsApp('Olá, Refri Ice! Meu CEP é ' + cep + ' (' + local + ') e gostaria de um orçamento.')
+            });
           } else {
-            setEstado('nao-atendido', null, data);
+            renderResultado(
+              result, 'no', '!',
+              resposta.situacao === 'consultar'
+                ? 'Precisamos confirmar esse endereço'
+                : local + ' está fora da nossa área principal',
+              'Fale com a gente pelo WhatsApp: podemos avaliar o seu atendimento.',
+              {
+                texto: 'Consultar pelo WhatsApp →',
+                href: config.linkWhatsApp('Olá, Refri Ice! Vocês atendem o CEP ' + cep + ' (' + local + ')?')
+              }
+            );
           }
         })
-        .catch(function () {
-          button.disabled = false;
-          setEstado('erro', 'Não foi possível consultar o CEP agora. Tente novamente.');
+        .catch(function (erro) {
+          const mensagens = {
+            'invalido': ['CEP inválido', 'Confira os números digitados.'],
+            'nao-encontrado': ['CEP não encontrado', 'Confira os números digitados.'],
+            'rede': ['Não foi possível consultar agora', 'Tente de novo ou fale direto com a gente.']
+          };
+          const msg = mensagens[erro.message] || mensagens.rede;
+          renderResultado(result, 'no', '!', msg[0], msg[1], erro.message === 'rede' ? {
+            texto: 'Chamar no WhatsApp →',
+            href: config.linkWhatsApp('Olá, Refri Ice! Vocês atendem o CEP ' + cep + '?')
+          } : null);
+        })
+        .finally(function () {
+          if (button) button.disabled = false;
         });
     });
-
-    function setEstado(estado, mensagemErro, dados) {
-      if (led) {
-        led.classList.remove('is-checking', 'is-success', 'is-danger');
-      }
-
-      if (estado === 'checando') {
-        if (led) led.classList.add('is-checking');
-        readout.innerHTML = '<p class="readout-idle">Consultando endereço…</p>';
-        return;
-      }
-
-      if (estado === 'erro') {
-        if (led) led.classList.add('is-danger');
-        readout.innerHTML = '<p class="readout-note" style="color:var(--danger)">' + mensagemErro + '</p>';
-        return;
-      }
-
-      if (estado === 'fora-cidade') {
-        if (led) led.classList.add('is-danger');
-        readout.innerHTML =
-          linha('Cidade', dados.localidade + ' / ' + dados.uf) +
-          '<p class="readout-status no">FORA DA ÁREA</p>' +
-          '<p class="readout-note">Atendemos apenas a capital de São Paulo.</p>';
-        return;
-      }
-
-      if (estado === 'atendido') {
-        if (led) led.classList.add('is-success');
-        readout.innerHTML =
-          linha('Endereço', dados.logradouro || '—') +
-          linha('Bairro', dados.bairro || '—') +
-          linha('Cidade', dados.localidade + ' / ' + dados.uf) +
-          '<p class="readout-status ok">✓ ATENDIDO</p>' +
-          '<p class="readout-note">Ótimo! Fazemos atendimento na sua região.</p>';
-        return;
-      }
-
-      if (estado === 'nao-atendido') {
-        if (led) led.classList.add('is-danger');
-        readout.innerHTML =
-          linha('Endereço', dados.logradouro || '—') +
-          linha('Bairro', dados.bairro || '—') +
-          linha('Cidade', dados.localidade + ' / ' + dados.uf) +
-          '<p class="readout-status no">✕ FORA DA ÁREA</p>' +
-          '<p class="readout-note">Ainda não atendemos esse bairro. Fale com a gente para confirmar.</p>';
-      }
-    }
-
-    function linha(label, valor) {
-      return '<div class="readout-line"><span>' + label + '</span><span>' + valor + '</span></div>';
-    }
   }
 
   document.querySelectorAll('[data-coverage-panel]').forEach(initPanel);

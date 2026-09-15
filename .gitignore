@@ -1,0 +1,12 @@
+# Vercel
+.vercel
+
+# Dependências (caso o projeto passe a usar npm)
+node_modules
+
+# Sistema operacional / editores
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode
+.idea
