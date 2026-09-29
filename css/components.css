@@ -437,6 +437,21 @@
   to { transform: translateX(-50%); }
 }
 
+/* Pausa ao passar o mouse, para dar tempo de ler */
+.brands__track:hover .brands__list {
+  animation-play-state: paused;
+}
+
+/* O letreiro continua correndo mesmo com "reduzir movimento" ativo no
+   sistema (ex.: efeitos de animação desligados no Windows): é lento,
+   não pisca e pausa ao passar o mouse. */
+@media (prefers-reduced-motion: reduce) {
+  .brands__list {
+    animation-duration: 38s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
 /* ---------- Cartões de serviço ---------- */
 .service-grid {
   display: grid;
