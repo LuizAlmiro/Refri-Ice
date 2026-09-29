@@ -10,3 +10,6 @@ desktop.ini
 .DS_Store
 .vscode
 .idea
+
+# Fotos e vídeos originais do cliente (o site usa as versões otimizadas em img/)
+_midia-cliente/

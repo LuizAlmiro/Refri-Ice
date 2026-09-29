@@ -24,6 +24,53 @@
 
   let localCep = ''; // "Bairro, Cidade" retornado pela consulta
 
+  /* ---------- Campos que mudam conforme o serviço ---------- */
+  const servico = form.querySelector('#servico');
+  const grupos = form.querySelectorAll('[data-grupo]');
+  const quantidadeLabel = form.querySelector('[data-quantidade-label]');
+  const marcaLabel = form.querySelector('[data-marca-label]');
+  const marca = form.querySelector('#marca');
+  const mensagem = form.querySelector('#mensagem');
+
+  const textosPorTipo = {
+    camara: {
+      quantidade: 'Quantidade de câmaras',
+      marca: 'Tamanho aproximado',
+      marcaExemplo: 'Ex.: 3 x 2 m, pé-direito de 2,5 m',
+      mensagemExemplo: 'Ex.: câmara de congelados para açougue; ou câmara parou de gelar desde ontem.'
+    },
+    ar: {
+      quantidade: 'Quantidade de aparelhos',
+      marca: 'Marca e capacidade',
+      marcaExemplo: 'Ex.: LG, 12.000 BTUs',
+      mensagemExemplo: 'Ex.: instalação em apartamento no 5º andar, condensadora na varanda.'
+    },
+    geral: {
+      quantidade: 'Quantidade',
+      marca: 'Equipamento',
+      marcaExemplo: 'Ex.: marca, modelo ou tamanho',
+      mensagemExemplo: 'Conte o que você precisa.'
+    }
+  };
+
+  function tipoDoServico() {
+    const opcao = servico.options[servico.selectedIndex];
+    return (opcao && opcao.getAttribute('data-tipo')) || 'geral';
+  }
+
+  function atualizarCampos() {
+    const tipo = tipoDoServico();
+    const t = textosPorTipo[tipo];
+    grupos.forEach(function (g) { g.hidden = g.getAttribute('data-grupo') !== tipo; });
+    quantidadeLabel.textContent = t.quantidade;
+    marcaLabel.firstChild.textContent = t.marca + ' ';
+    marca.placeholder = t.marcaExemplo;
+    mensagem.placeholder = t.mensagemExemplo;
+  }
+
+  servico.addEventListener('change', atualizarCampos);
+  atualizarCampos();
+
   /* ---------- Máscaras ---------- */
   telefone.addEventListener('input', function () {
     const d = telefone.value.replace(/\D/g, '').slice(0, 11);
@@ -102,6 +149,12 @@
   /* ---------- Montagem dos dados ---------- */
   function coletar() {
     const f = new FormData(form);
+    const tipo = tipoDoServico();
+    // Tipo de câmara ou de aparelho, conforme o serviço escolhido
+    const equipamento = tipo === 'camara' ? { rotulo: 'Tipo de câmara', valor: f.get('camara') }
+      : tipo === 'ar' ? { rotulo: 'Tipo de aparelho', valor: f.get('aparelho') }
+      : null;
+
     return {
       nome: (f.get('nome') || '').trim(),
       telefone: f.get('telefone'),
@@ -110,8 +163,10 @@
       local: localCep,
       servico: f.get('servico'),
       quantidade: f.get('quantidade'),
-      aparelho: f.get('aparelho'),
+      rotuloQuantidade: textosPorTipo[tipo].quantidade,
+      equipamento: equipamento,
       marca: (f.get('marca') || '').trim(),
+      rotuloMarca: textosPorTipo[tipo].marca,
       mensagem: (f.get('mensagem') || '').trim(),
       honey: f.get('_honey')
     };
@@ -121,11 +176,12 @@
     const linhas = [
       'Olá, Refri Ice! Fiz um pedido de orçamento pelo site:',
       '• Nome: ' + d.nome,
-      '• Serviço: ' + d.servico,
-      '• Aparelho: ' + d.aparelho + ' (' + d.quantidade + (d.quantidade === '1' ? ' unidade)' : ' unidades)'),
-      '• CEP: ' + d.cep + (d.local ? ' (' + d.local + ')' : '')
+      '• Serviço: ' + d.servico
     ];
-    if (d.marca) linhas.push('• Marca/capacidade: ' + d.marca);
+    if (d.equipamento) linhas.push('• ' + d.equipamento.rotulo + ': ' + d.equipamento.valor);
+    linhas.push('• ' + d.rotuloQuantidade + ': ' + d.quantidade);
+    linhas.push('• CEP: ' + d.cep + (d.local ? ' (' + d.local + ')' : ''));
+    if (d.marca) linhas.push('• ' + d.rotuloMarca + ': ' + d.marca);
     if (d.mensagem) linhas.push('• Detalhes: ' + d.mensagem);
     return linhas.join('\n');
   }
@@ -139,9 +195,9 @@
       Nome: d.nome,
       'WhatsApp / Telefone': d.telefone,
       'Serviço': d.servico,
-      'Tipo de aparelho': d.aparelho,
+      'Tipo de câmara / aparelho': d.equipamento ? d.equipamento.valor : '—',
       Quantidade: d.quantidade,
-      'Marca e capacidade': d.marca || '—',
+      'Equipamento / tamanho': d.marca || '—',
       CEP: d.cep,
       'Bairro / Cidade': d.local || '—',
       Mensagem: d.mensagem || '—'
@@ -199,6 +255,7 @@
     if (dados.honey) {
       mostrarStatus('ok', 'Pedido enviado!', 'Em breve entraremos em contato.');
       form.reset();
+      atualizarCampos();
       return;
     }
 
@@ -215,6 +272,7 @@
           'Enviar resumo pelo WhatsApp'
         );
         form.reset();
+        atualizarCampos();
         localCep = '';
         setHint('', '');
       })

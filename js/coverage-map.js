@@ -1,20 +1,22 @@
 /* =========================================================
    REFRI ICE — coverage-map.js
-   Mapa real (OpenStreetMap + Leaflet) com as regiões atendidas.
-   As regiões e coordenadas ficam em site-config.js (mapa).
+   Mapa real (OpenStreetMap + Leaflet) com a área atendida:
+   toda a Grande São Paulo. O contorno fica em
+   js/area-cobertura.js e o rótulo em site-config.js (mapa).
    ========================================================= */
 
 (function () {
   const container = document.querySelector('[data-coverage-map]');
-  const regioes = (window.REFRI_ICE && window.REFRI_ICE.mapa) || [];
+  const area = window.REFRI_ICE_AREA;
+  const config = (window.REFRI_ICE && window.REFRI_ICE.mapa) || {};
 
-  if (!container || !regioes.length) return;
+  if (!container || !area || !area.length) return;
 
   // Sem a biblioteca (sem internet ou CDN bloqueado): mostra link para o mapa externo
   if (!window.L) {
     container.innerHTML =
       '<p class="coverage-map__fallback">Não foi possível carregar o mapa. ' +
-      '<a href="https://www.openstreetmap.org/#map=12/-23.545/-46.760" target="_blank" rel="noopener">Abrir no OpenStreetMap</a></p>';
+      '<a href="https://www.openstreetmap.org/relation/2661855" target="_blank" rel="noopener">Ver a Grande São Paulo no OpenStreetMap</a></p>';
     return;
   }
 
@@ -36,45 +38,37 @@
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
   }).addTo(map);
 
-  const icone = L.divIcon({
-    className: 'map-pin',
-    html: '<span class="map-pin__pulse"></span><span class="map-pin__dot"></span>',
-    iconSize: [22, 22],
-    iconAnchor: [11, 11]
-  });
+  // Área atendida: contorno da Região Metropolitana de São Paulo
+  const regiao = L.polygon(area, {
+    color: '#0b7fc4',
+    weight: 2.5,
+    opacity: 0.9,
+    fillColor: '#28aaeb',
+    fillOpacity: 0.18,
+    interactive: false
+  }).addTo(map);
 
-  const deslocamentos = { top: [0, -12], bottom: [0, 12], left: [-12, 0], right: [12, 0] };
-  const limites = L.latLngBounds([]);
+  if (config.rotulo) {
+    const icone = L.divIcon({
+      className: 'map-pin',
+      html: '<span class="map-pin__pulse"></span><span class="map-pin__dot"></span>',
+      iconSize: [22, 22],
+      iconAnchor: [11, 11]
+    });
 
-  regioes.forEach(function (r) {
-    const centro = [r.lat, r.lng];
-    const direcao = r.rotulo || 'top';
-
-    L.circle(centro, {
-      radius: r.raio,
-      color: '#0b7fc4',
-      weight: 2,
-      opacity: 0.8,
-      fillColor: '#28aaeb',
-      fillOpacity: 0.2
-    }).addTo(map);
-
-    L.marker(centro, { icon: icone, keyboard: false, alt: r.nome })
-      .bindTooltip(r.nome, {
+    L.marker([config.lat, config.lng], { icon: icone, keyboard: false, alt: config.rotulo })
+      .bindTooltip(config.rotulo, {
         permanent: true,
-        direction: direcao,
-        offset: deslocamentos[direcao],
-        className: 'map-label map-label--' + direcao
+        direction: 'top',
+        offset: [0, -12],
+        className: 'map-label map-label--top'
       })
       .addTo(map);
-
-    // Enquadra os círculos inteiros, não só os centros
-    limites.extend(L.latLng(centro).toBounds(r.raio * 2));
-  });
+  }
 
   function enquadrar() {
     map.invalidateSize();
-    map.fitBounds(limites, { padding: [24, 24] });
+    map.fitBounds(regiao.getBounds(), { padding: [16, 16] });
   }
 
   enquadrar();

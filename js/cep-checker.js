@@ -15,6 +15,7 @@
     return (texto || '')
       .normalize('NFD')
       .replace(/[̀-ͯ]/g, '')
+      .replace(/[-–]/g, ' ') // "Embu-Guaçu" = "Embu Guaçu"
       .toLowerCase()
       .replace(/\s+/g, ' ')
       .trim();

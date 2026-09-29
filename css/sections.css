@@ -121,46 +121,64 @@
 }
 
 /* ---------- Área de cobertura ---------- */
-.coverage__regions {
-  display: grid;
-  gap: 22px;
-  margin: 8px 0 32px;
-}
-
-.coverage__group h3 {
-  font-size: 0.85rem;
-  font-family: var(--font-body);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  background: var(--white);
+.cities {
+  margin: 4px 0 28px;
   border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.cities summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
   font-weight: 600;
   color: var(--ink);
 }
 
-.chip::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--sky-500);
+.cities summary::-webkit-details-marker {
+  display: none;
+}
+
+.cities summary svg {
+  width: 18px;
+  height: 18px;
+  color: var(--sky-600);
+}
+
+.cities summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--muted);
+  transition: transform 0.2s ease;
+}
+
+.cities[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.cities__list {
+  columns: 3;
+  column-gap: 20px;
+  padding: 0 20px 18px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.cities__list li {
+  padding: 3px 0;
+  break-inside: avoid;
+}
+
+@media (max-width: 600px) {
+  .cities__list {
+    columns: 2;
+  }
 }
 
 .coverage-map {
@@ -175,7 +193,7 @@
 .coverage-map__canvas {
   position: relative;
   z-index: 0;
-  height: 540px;
+  height: 460px;
   border-radius: calc(var(--radius-lg) - 8px);
   overflow: hidden;
   background: var(--sky-100);
@@ -537,6 +555,20 @@
   width: 100%;
   height: auto;
   max-height: 150px;
+}
+
+.service-detail__photo {
+  margin: 0 0 28px;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--sky-100);
+}
+
+.service-detail__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-detail h2 {
@@ -975,6 +1007,23 @@ fieldset.field {
 .contact-aside {
   display: grid;
   gap: 20px;
+}
+
+.contact-area {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.contact-area svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--sky-600);
 }
 
 .channel-card {
