@@ -14,6 +14,11 @@ window.REFRI_ICE = {
   // E-mail que recebe os pedidos de orçamento do formulário
   emailOrcamentos: 'mkt.refriice@gmail.com',
 
+  // Chave do Web3Forms (web3forms.com), gerada para o e-mail acima.
+  // Preenchida: o formulário envia pelo Web3Forms.
+  // Vazia: o formulário usa o FormSubmit.
+  web3formsKey: '13fb6259-c23c-43bf-8059-f6ef747683ca',
+
   /* ---- Área de cobertura (alimenta o verificador de CEP) ----
      Atendemos toda a Grande São Paulo: a capital e os demais
      municípios da Região Metropolitana (39 no total).

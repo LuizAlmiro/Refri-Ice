@@ -32,11 +32,14 @@ Textos, telefones exibidos e horários ficam direto no HTML de cada página.
 
 ## Formulário de orçamento
 
-O envio usa o [FormSubmit](https://formsubmit.co) (gratuito, sem cadastro). No **primeiro**
-pedido enviado pelo site publicado, o FormSubmit manda um e-mail de confirmação para o
-endereço configurado em `site-config.js`; basta clicar em *Activate Form* uma vez.
+O envio usa o [Web3Forms](https://web3forms.com) (gratuito até 250 envios/mês), com a chave
+`web3formsKey` de `js/site-config.js`, gerada para `mkt.refriice@gmail.com`. A chave é pública
+por natureza (só permite enviar mensagens para esse e-mail). O Web3Forms só aceita envios
+feitos pelo navegador; testes por terminal (curl) retornam 403 no plano gratuito.
 
-Se o envio por e-mail falhar, o site oferece ao cliente mandar o mesmo pedido pelo WhatsApp.
+Se a chave for apagada, o formulário volta a usar o [FormSubmit](https://formsubmit.co).
+
+Se o envio falhar, o site oferece ao cliente mandar o mesmo pedido pelo WhatsApp.
 
 ## Fotos e vídeos das obras
 
@@ -87,7 +90,7 @@ video/  vídeos das obras
 - [ViaCEP](https://viacep.com.br) — consulta de CEP do verificador de cobertura.
 - [OpenStreetMap](https://www.openstreetmap.org/copyright) + [Leaflet](https://leafletjs.com) — mapa da área atendida (o crédito ao OpenStreetMap deve ser mantido).
 - [Google Fonts](https://fonts.google.com) — fontes Saira e Figtree.
-- [FormSubmit](https://formsubmit.co) — envio do formulário por e-mail.
+- [Web3Forms](https://web3forms.com) — envio do formulário por e-mail (FormSubmit como reserva).
 
 ## Publicação e domínio
 

@@ -1,7 +1,12 @@
 /* =========================================================
    REFRI ICE — contact-form.js
    Formulário de orçamento: máscaras, verificação do CEP,
-   envio por e-mail (FormSubmit) e atalho para o WhatsApp.
+   envio por e-mail e atalho para o WhatsApp.
+
+   >>> SERVIÇO DE ENVIO <<<
+   Com "web3formsKey" preenchida em site-config.js, o envio usa o
+   Web3Forms (a chave identifica o formulário; não há ativação).
+   Sem a chave, usa o FormSubmit, descrito abaixo.
 
    >>> ATIVAÇÃO DO ENVIO POR E-MAIL <<<
    O envio usa o serviço gratuito FormSubmit (formsubmit.co).
@@ -190,12 +195,8 @@
     return linhas.join('\n');
   }
 
-  function enviarEmail(d) {
-    const payload = {
-      _subject: 'Novo pedido de orçamento: ' + d.servico + ' — ' + d.nome,
-      _template: 'table',
-      _captcha: 'false',
-      _honey: d.honey || '',
+  function camposDoPedido(d) {
+    return {
       Nome: d.nome,
       'WhatsApp / Telefone': d.telefone,
       'Serviço': d.servico,
@@ -206,6 +207,40 @@
       'Bairro / Cidade': d.local || '—',
       Mensagem: d.mensagem || '—'
     };
+  }
+
+  function respostaOk(res) {
+    return res.json().catch(function () { return {}; }).then(function (json) {
+      if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'Falha no envio');
+      return json;
+    });
+  }
+
+  function enviarEmail(d) {
+    const assunto = 'Novo pedido de orçamento: ' + d.servico + ' — ' + d.nome;
+
+    if (config.web3formsKey) {
+      const dados = Object.assign({
+        access_key: config.web3formsKey,
+        subject: assunto,
+        from_name: 'Site Refri Ice',
+        botcheck: d.honey || ''
+      }, camposDoPedido(d));
+      if (d.email) dados.replyto = d.email; // "responder para" vai direto ao cliente
+
+      return fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(dados)
+      }).then(respostaOk);
+    }
+
+    const payload = Object.assign({
+      _subject: assunto,
+      _template: 'table',
+      _captcha: 'false',
+      _honey: d.honey || ''
+    }, camposDoPedido(d));
     if (d.email) payload.email = d.email; // FormSubmit usa este campo como "responder para"
 
     return fetch('https://formsubmit.co/ajax/' + config.emailOrcamentos, {
@@ -218,12 +253,7 @@
       // formulário ativado: https://refri-ice.com.br/contato.html
       referrer: location.origin + location.pathname,
       referrerPolicy: 'no-referrer-when-downgrade'
-    }).then(function (res) {
-      return res.json().catch(function () { return {}; }).then(function (json) {
-        if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'Falha no envio');
-        return json;
-      });
-    });
+    }).then(respostaOk);
   }
 
   /* ---------- Mensagens de retorno ---------- */
