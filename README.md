@@ -89,6 +89,16 @@ video/  vídeos das obras
 - [Google Fonts](https://fonts.google.com) — fontes Saira e Figtree.
 - [FormSubmit](https://formsubmit.co) — envio do formulário por e-mail.
 
+## Publicação e domínio
+
+- Hospedagem: Vercel, publicando automaticamente a cada push no `main`.
+- Domínio: `refri-ice.com.br` (Registro.br), com `www.refri-ice.com.br` redirecionando para ele.
+- DNS no Registro.br: registro **A** em `@` e **CNAME** em `www`, com os valores mostrados em
+  Vercel → Settings → Domains.
+- Os links oficiais das páginas (`canonical`, `og:url`), a imagem de compartilhamento
+  (`img/og-refri-ice.jpg`, 1200×630), o `sitemap.xml` e o `robots.txt` já usam
+  `https://refri-ice.com.br`. Se o domínio mudar, atualize esses pontos.
+
 ## Rodar localmente
 
 Abrir `index.html` no navegador já funciona. Para um ambiente mais próximo do publicado,
