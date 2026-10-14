@@ -9,6 +9,10 @@
    manda um e-mail de confirmação para o endereço configurado
    em site-config.js (emailOrcamentos). Basta clicar em
    "Activate Form" nesse e-mail uma única vez.
+
+   A ativação vale para o endereço da página que envia
+   (hoje: https://refri-ice.com.br/contato.html). Se o domínio
+   ou o nome da página mudar, será preciso ativar de novo.
    ========================================================= */
 
 (function () {
@@ -207,7 +211,13 @@
     return fetch('https://formsubmit.co/ajax/' + config.emailOrcamentos, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      // O FormSubmit identifica (e ativa) o formulário pelo endereço da página
+      // que envia. Por padrão o navegador manda só o domínio; aqui mandamos o
+      // endereço completo, sem parâmetros (?utm=...), para bater sempre com o
+      // formulário ativado: https://refri-ice.com.br/contato.html
+      referrer: location.origin + location.pathname,
+      referrerPolicy: 'no-referrer-when-downgrade'
     }).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (json) {
         if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'Falha no envio');
