@@ -9,7 +9,7 @@
 
 window.REFRI_ICE = {
   // Número do WhatsApp principal (somente dígitos, com 55 + DDD)
-  whatsapp: '5511985211208',
+  whatsapp: '5511985211508',
 
   // E-mail que recebe os pedidos de orçamento do formulário
   emailOrcamentos: 'mkt.refriice@gmail.com',
